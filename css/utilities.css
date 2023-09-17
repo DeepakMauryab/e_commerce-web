@@ -1,0 +1,176 @@
+.text-liner {
+  position: relative;
+}
+.text-liner::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  background-color: #fff;
+  left: 0;
+  top: 90%;
+  transition: all 0.5s ease-out;
+  transform: scaleX(0);
+}
+.text-liner:hover:after {
+  transform: scaleX(1);
+}
+
+.slider figure.slick-active {
+  animation: sliderImage 3s ease-out;
+}
+@keyframes sliderImage {
+  0% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+/* buttons  */
+
+.button-Theme {
+  padding: 0.6em 2em;
+  border: none;
+  outline: none;
+  color: rgb(0, 0, 0);
+  background: #000000;
+  cursor: pointer;
+  position: relative;
+  z-index: 0;
+  border-radius: 10px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  transition: all 0.5s ease-out;
+  display: flex;
+}
+.button-Theme:hover {
+  background: #000;
+  color: #fff;
+}
+
+.button-Theme:before {
+  content: "";
+  background: linear-gradient(
+    45deg,
+    #000000,
+    #ff7300,
+    #fffb00,
+    #48ff00,
+    #00ffd5,
+    #002bff,
+    #7a00ff,
+    #ff00c8,
+    #ff0000
+  );
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  background-size: 400%;
+  z-index: -1;
+  filter: blur(5px);
+  -webkit-filter: blur(5px);
+  width: calc(100% + 0px);
+  height: calc(100% + 0px);
+  transition: all 0.3s ease-in-out;
+  border-radius: 10px;
+  animation: glowing-button-Theme 20s linear infinite;
+}
+.button-Theme:hover::before {
+  width: calc(100% + 8px);
+  height: calc(100% + 8px);
+}
+
+@keyframes glowing-button-Theme {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 400% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+.button-Theme:after {
+  z-index: -1;
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #ffffff;
+  left: 0;
+  top: 0;
+  border-radius: 10px;
+  transition: all 0.5s ease-out;
+  scale: 0;
+}
+.button-Theme:hover:after {
+  background: #000;
+  scale: 1;
+}
+
+.boxes {
+  margin-top: 2rem;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(10px, calc(25% - 1rem)));
+}
+
+.count {
+  position: absolute;
+  color: #000000;
+  top: -3px;
+  right: -8px;
+  font-size: 0.55rem;
+  border-radius: 50%;
+  width: auto;
+  padding: 0 0.15rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--theme-color);
+}
+
+.slick-arrow {
+  position: absolute;
+  z-index: 1;
+  top: 45%;
+  cursor: pointer;
+  transform: translateY(-50%);
+}
+.slick-arrow path {
+  fill: #fff;
+}
+.slick-arrow.next {
+  right: 2%;
+}
+.slick-arrow.prev {
+  left: 2%;
+}
+.slick-dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.2rem;
+  margin-top: 0.4rem;
+  position: relative;
+  bottom: 20px;
+}
+.slick-dots li {
+  background: #ffffff;
+  width: 20px;
+  height: 4px;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.8s ease-out;
+}
+.slick-dots li.slick-active {
+  background: #faeaa1;
+  width: 40px;
+}
+.slick-dots li button {
+  display: none;
+}
