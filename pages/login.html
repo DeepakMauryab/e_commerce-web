@@ -79,10 +79,13 @@
         padding: 40px;
         border-radius: 4px;
         box-shadow: 0 15px 35px rgba(0, 0, 0, 9);
+        transition: all 1s ease-out;
       }
       section #register {
         padding: 10px 40px;
-        display: none;
+        transform: rotateY(90deg);
+        top: -10%;
+        position: absolute;
       }
       section .signin .content {
         position: relative;
@@ -244,21 +247,19 @@
       <span></span> <span></span> <span></span> <span></span> <span></span>
 
       <div id="userAuthForm">
-        <div class="absolute">
-          <a href="../" class="goBack"
-            ><i class="bi bi-chevron-left"></i> go to home</a
-          >
-        </div>
         <div class="signin" id="login">
+          <div class="absolute goBack">
+            <a href="../"><i class="bi bi-chevron-left"></i> go to home</a>
+          </div>
           <div class="content">
             <h2>Sign In</h2>
-            <div class="form">
+            <form action="../backend/userController.php" method="post" class="form">
               <div class="inputBox">
-                <input type="text" required /> <i>email</i>
+                <input type="text" name="emailMobile" /> <i>email</i>
               </div>
 
               <div class="inputBox">
-                <input type="password" required /> <i>Password</i>
+                <input type="password" name="password" /> <i>Password</i>
               </div>
 
               <div class="links">
@@ -269,24 +270,32 @@
               <div class="inputBox">
                 <input type="submit" value="Login" />
               </div>
-            </div>
+            </form>
           </div>
         </div>
         <div class="signin register" id="register">
+          <div class="absolute goBack">
+            <a href="../"><i class="bi bi-chevron-left"></i> go to home</a>
+          </div>
           <div class="content">
             <h2>Sign Up</h2>
-            <div class="form">
+            <form
+              action="../backend/userController.php"
+              class="form"
+              method="post"
+            >
               <div class="inputBox">
-                <input type="text" required /> <i>Email</i>
+                <input type="text" name="email" /> <i>Email</i>
               </div>
               <div class="inputBox">
-                <input type="text" required /> <i>Mobile Number</i>
+                <input type="text" name="mobile" /> <i>Mobile Number</i>
               </div>
               <div class="inputBox">
-                <input type="password" required /> <i>Password</i>
+                <input type="password" name="password" /> <i>Password</i>
               </div>
               <div class="inputBox">
-                <input type="password" required /> <i>Confirm Password</i>
+                <input type="password" name="confirmPassword" />
+                <i>Confirm Password</i>
               </div>
 
               <div class="links">
@@ -294,9 +303,9 @@
               </div>
 
               <div class="inputBox">
-                <input type="submit" value="Sign Up" />
+                <input type="submit" name="register" value="Sign Up" />
               </div>
-            </div>
+            </form>
           </div>
         </div>
       </div>
@@ -307,22 +316,25 @@
 
       const handleForms = (e, state = false) => {
         e.preventDefault();
-        if (state) {
-          userAuthForm.querySelector("#login").style.display = "none";
-          userAuthForm.querySelector("#register").style.display = "flex";
+        if (!state) {
+          userAuthForm.querySelector("#register").style.transform =
+            "rotateY(90deg)";
+          userAuthForm.querySelector("#login").style.transform =
+            "rotateY(0deg)";
         } else {
-          userAuthForm.querySelector("#login").style.display = "flex";
-          userAuthForm.querySelector("#register").style.display = "none";
+          userAuthForm.querySelector("#login").style.transform =
+            "rotateY(90deg)";
+          userAuthForm.querySelector("#register").style.transform =
+            "rotateY(0deg)";
+          // userAuthForm.querySelector("#register").style.visibility = "visible";
         }
       };
-      if (userAuthForm) {
-        userAuthForm
-          .querySelector("#goSignUp")
-          .addEventListener("click", (e) => handleForms(e, true));
-        userAuthForm
-          .querySelector("#goSignIn")
-          .addEventListener("click", handleForms);
-      }
+      userAuthForm
+        .querySelector("#goSignUp")
+        .addEventListener("click", (e) => handleForms(e, true));
+      userAuthForm
+        .querySelector("#goSignIn")
+        .addEventListener("click", handleForms);
     </script>
   </body>
 </html>

@@ -288,9 +288,15 @@ img {
 }
 
 .goBack {
+  z-index: 1000;
+  top: 0;
+  left: 0;
+}
+.goBack a{
   color: #0f0;
   font-size: 0.9rem;
   text-transform: capitalize;
+  z-index: 1000;
 }
 
 figure.zoomBox {
