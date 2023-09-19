@@ -81,7 +81,7 @@ a {
 .over-hidden {
   overflow: hidden;
 }
-.text-white{
+.text-white {
   color: #fff;
 }
 /* padding section start */
@@ -292,7 +292,7 @@ img {
   top: 0;
   left: 0;
 }
-.goBack a{
+.goBack a {
   color: #0f0;
   font-size: 0.9rem;
   text-transform: capitalize;
@@ -353,4 +353,23 @@ figure.zoomBox:hover img {
   100% {
     transform: rotate(1440deg);
   }
+}
+
+.help-inline {
+  position: absolute;
+  background-color: transparent;
+  color: #f33066;
+  border-radius: 5px;
+  padding: 0px 10px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .5px;
+  top: 100%;
+  left: 0;
+  width: auto;
+  height: auto;
+}
+
+.text-end{
+  text-align: right;
 }

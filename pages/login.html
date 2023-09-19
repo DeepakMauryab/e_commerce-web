@@ -253,11 +253,11 @@
           </div>
           <div class="content">
             <h2>Sign In</h2>
-            <form action="../backend/userController.php" method="post" class="form">
+            <form action="../backend/userController.php" method="post" class="form" id="loginForm">
               <div class="inputBox">
                 <input type="text" name="emailMobile" /> <i>email</i>
               </div>
-
+              
               <div class="inputBox">
                 <input type="password" name="password" /> <i>Password</i>
               </div>
@@ -288,7 +288,7 @@
                 <input type="text" name="email" /> <i>Email</i>
               </div>
               <div class="inputBox">
-                <input type="text" name="mobile" /> <i>Mobile Number</i>
+                <input type="text" name="mobile" maxlength="10" /> <i>Mobile Number</i>
               </div>
               <div class="inputBox">
                 <input type="password" name="password" /> <i>Password</i>
@@ -335,6 +335,10 @@
       userAuthForm
         .querySelector("#goSignIn")
         .addEventListener("click", handleForms);
+        
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
+    <script src="../js/validation.js"></script>
   </body>
 </html>

@@ -298,8 +298,8 @@ nav .nav-icons a {
   width: 50%;
   padding: 2rem 1rem 2rem 3rem;
   position: relative;
-  background-color: #00000097;
   color: #fff;
+  background-color: #0000006a;
 }
 .ads .left::before {
   content: "";
@@ -308,12 +308,22 @@ nav .nav-icons a {
   left: 0;
   width: 100%;
   height: 100%;
-  background: url("../Assets/bg/bg3.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   z-index: -1;
-  opacity: 0.7;
+  opacity: 0.6;
 }
+.ads:not(.adsNew) .left::before {
+  background: url("../Assets/bg/bg3.jpg");
+}
+.adsNew .left::before {
+  background: url("../Assets/bg/bg5.jpg") !important;
+}
+.adsNew .left {
+  background-color: #ffffff6a;
+  color: #000;
+}
+
 .ads .left p {
   font-weight: 600;
   font-size: 0.8rem;
@@ -340,11 +350,11 @@ footer {
 }
 footer .sections > div {
   width: 20%;
-  border-right:1px solid #ffffff86;
+  border-right: 1px solid #ffffff86;
 }
 footer .sections > div:last-child {
   width: 20%;
-  border-right:0;
+  border-right: 0;
 }
 footer .sections .first p {
   font-size: 0.7rem;
@@ -362,19 +372,198 @@ footer .shareIcons ul {
   display: flex;
   gap: 2rem;
 }
-footer .shareIcons ul a{
+footer .shareIcons ul a {
   font-size: 1.3rem;
   color: var(--icon-color);
 }
 
-
 .bottom-bar {
   border-top: 1px solid #6e6e6e;
   background: #000;
+  padding: 10px 0;
 }
 .bottom-bar p {
   font-size: 12px;
   font-weight: 300;
   padding: 5px 0;
   color: #ffffff;
+}
+.cartDesign .cf:before,
+.cartDesign .cf:after {
+  content: " ";
+  display: table;
+}
+
+.cartDesign .wrap {
+  width: 75%;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 5% 0;
+  margin-bottom: 5em;
+}
+.cartDesign .projTitle {
+  font-weight: bold;
+  text-align: center;
+  font-size: 2em;
+  padding: 1em 0;
+  border-bottom: 1px solid #dadada;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+.cartDesign .projTitle span {
+  font-weight: normal;
+  font-style: italic;
+  text-transform: lowercase;
+  color: #777;
+}
+.cartDesign .headingCart {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  align-items: center;
+}
+.cartDesign .headingCart h1 {
+  font-size: 2em;
+  float: left;
+}
+.cartDesign .headingCart a.continue {
+  text-decoration: none;
+  letter-spacing: -0.015em;
+  font-size: 0.75em;
+  padding: 0.5rem 1rem;
+  color: #fff;
+  background: #82ca9c;
+  font-weight: bold;
+  border-radius: 50px;
+  transition: all 0.25s linear;
+}
+.cartDesign .headingCart a.continue:after {
+  content: "\276f";
+  padding: 0.5em;
+  position: relative;
+  right: 0;
+  transition: all 0.15s linear;
+}
+.cartDesign .headingCart a.continue:hover {
+  background: #f69679;
+}
+.cartDesign .headingCart a.continue:hover:after,
+.cartDesign .headingCart a.continue:focus:after,
+.cartDesign .headingCart a.continue:active:after {
+  right: -10px;
+}
+.cartDesign .tableHead {
+  display: table;
+  width: 100%;
+  font-size: 0.75em;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+.cartDesign .tableHead li {
+  width: 25%;
+  display: table-cell;
+  padding: 0.4em 0;
+}
+.cartDesign .tableHead li:nth-child(1) {
+  width: 35%;
+}
+.cartDesign .tableHead li:nth-child(3) {
+  padding-left: 3rem;
+}
+.cartDesign .cart {
+  padding: 1em 0;
+}
+.cartWrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+.cartWrap li {
+  width: 25%;
+  display: table-cell;
+  padding: 0.2em 0;
+}
+.cartWrap li:nth-child(1) {
+  width: 35%;
+  display: flex;
+  justify-content: start;
+  gap: 1.5rem;
+}
+.cartWrap li:nth-child(2)
+{
+  justify-content: flex-start;
+}
+.cartWrap li:nth-child(3) 
+{
+  display: flex;
+  justify-content: center;
+}
+.cartWrap li:nth-child(4) {
+  display: flex;
+  justify-content: end;
+}
+.cartWrap li figure {
+  width: 80px;
+  height: 50px;
+}
+
+.removeCart {
+  background: transparent;
+  border: 0;
+  color: red;
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+
+/* TOTAL AND CHECKOUT */
+.cartDesign .subtotal {
+  float: right;
+  width: 35%;
+}
+
+.cartDesign .incDec {
+  display: flex;
+  justify-content: center;
+}
+.cartDesign .incDec button {
+  background: transparent;
+  border: 0;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: all 0.4s ease-in;
+}
+.cartDesign .incDec button:hover {
+  transform: rotate(180deg) scale(1.1);
+}
+.cartDesign .incDec input {
+  border: 0;
+  background: transparent;
+  width: 80px;
+  text-align: center;
+  color: black;
+  font-size: 1.2rem;
+  outline: 0;
+}
+
+.cartDesign .subtotal .totalRow {
+  padding: 0.5em;
+  text-align: right;
+}
+.cartDesign .subtotal .totalRow.final {
+  font-size: 1.25em;
+  font-weight: bold;
+}
+.cartDesign .subtotal .totalRow span {
+  display: inline-block;
+  padding: 0 0 0 1em;
+  text-align: right;
+}
+.cartDesign .subtotal .totalRow .label {
+  font-size: 0.85em;
+  text-transform: uppercase;
+  color: #777;
+}
+.cartDesign .subtotal .totalRow .value {
+  letter-spacing: -0.025em;
+  width: 35%;
 }
