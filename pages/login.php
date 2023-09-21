@@ -1,3 +1,15 @@
+
+<?php
+
+session_start();
+if(isset($_SESSION['user'])){
+  ?>
+  <script>
+    window.history.back();
+  </script>
+  <?php
+}
+?>
 <!DOCTYPE html>
 
 <html lang="en">

@@ -9,7 +9,8 @@ nav {
   justify-content: space-between;
   color: #fff;
   padding: 0 4rem;
-  background: #282626;
+  /* background: #282626; */
+  background: #20282a;
   transition: all 0.5s ease-out;
   align-items: center;
 }
@@ -118,11 +119,11 @@ nav .nav-icons a {
   opacity: 0;
   transition: all 0.5s ease-in-out;
   top: 100%;
-  width: 100%;
+  min-width: 150px;
 }
 
 .dropParent:hover .dropdown {
-  transform: translateY(0);
+  transform: translateY(0.05rem);
   visibility: visible;
   opacity: 1;
 }
@@ -151,6 +152,7 @@ nav .nav-icons a {
   color: #fff;
   font-weight: 600;
   font-size: 0.9rem;
+  text-transform: capitalize;
 }
 .category_box .content button,
 .product_box .content button {
@@ -352,6 +354,12 @@ footer .sections > div {
   width: 20%;
   border-right: 1px solid #ffffff86;
 }
+footer .sections > div ul {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
 footer .sections > div:last-child {
   width: 20%;
   border-right: 0;
@@ -387,11 +395,6 @@ footer .shareIcons ul a {
   font-weight: 300;
   padding: 5px 0;
   color: #ffffff;
-}
-.cartDesign .cf:before,
-.cartDesign .cf:after {
-  content: " ";
-  display: table;
 }
 
 .cartDesign .wrap {
@@ -452,73 +455,13 @@ footer .shareIcons ul a {
 .cartDesign .headingCart a.continue:active:after {
   right: -10px;
 }
-.cartDesign .tableHead {
-  display: table;
-  width: 100%;
-  font-size: 0.75em;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-}
-.cartDesign .tableHead li {
-  width: 25%;
-  display: table-cell;
-  padding: 0.4em 0;
-}
-.cartDesign .tableHead li:nth-child(1) {
-  width: 35%;
-}
-.cartDesign .tableHead li:nth-child(3) {
-  padding-left: 3rem;
-}
-.cartDesign .cart {
-  padding: 1em 0;
-}
-.cartWrap {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-}
-.cartWrap li {
-  width: 25%;
-  display: table-cell;
-  padding: 0.2em 0;
-}
-.cartWrap li:nth-child(1) {
-  width: 35%;
-  display: flex;
-  justify-content: start;
-  gap: 1.5rem;
-}
-.cartWrap li:nth-child(2)
-{
-  justify-content: flex-start;
-}
-.cartWrap li:nth-child(3) 
-{
-  display: flex;
-  justify-content: center;
-}
-.cartWrap li:nth-child(4) {
-  display: flex;
-  justify-content: end;
-}
-.cartWrap li figure {
-  width: 80px;
-  height: 50px;
-}
 
 .removeCart {
   background: transparent;
   border: 0;
   color: red;
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   cursor: pointer;
-}
-
-/* TOTAL AND CHECKOUT */
-.cartDesign .subtotal {
-  float: right;
-  width: 35%;
 }
 
 .cartDesign .incDec {
@@ -544,26 +487,61 @@ footer .shareIcons ul a {
   font-size: 1.2rem;
   outline: 0;
 }
+/* TOTAL AND CHECKOUT */
+.cartDesign .subtotal {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1rem;
+}
+.cartDesign .subtotal ul {
+  border-radius: 3px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.17);
+  padding: 15px 10px;
+}
+.cartDesign .subtotal li {
+  display: flex;
+  gap: 5rem;
+  margin-bottom: 10px;
+  justify-content: space-between;
+}
 
-.cartDesign .subtotal .totalRow {
-  padding: 0.5em;
-  text-align: right;
+.cartDesign .subtotal li .btn {
+  border: 1px solid #00000000;
+  padding: 5px 10px;
+  font-size: 0.9rem;
+  border-radius: 4px;
+  transition: all 0.3s ease-out;
+  background: rgb(255, 236, 31);
 }
-.cartDesign .subtotal .totalRow.final {
-  font-size: 1.25em;
-  font-weight: bold;
+.cartDesign .subtotal li .btn:hover {
+  border: 1px solid #000;
+  background: rgba(255, 236, 31, 0);
 }
-.cartDesign .subtotal .totalRow span {
-  display: inline-block;
-  padding: 0 0 0 1em;
-  text-align: right;
+
+#cartcount,
+#wishcount {
+  font-size: 1rem;
 }
-.cartDesign .subtotal .totalRow .label {
-  font-size: 0.85em;
-  text-transform: uppercase;
-  color: #777;
+
+.cartDesign .cartTable {
+  width: 100%;
+  text-align: center;
+  border-collapse: collapse;
 }
-.cartDesign .subtotal .totalRow .value {
-  letter-spacing: -0.025em;
-  width: 35%;
+.cartDesign .cartTable figure {
+  width: 98px;
+  height: 64px;
+  display: flex;
+}
+.cartDesign .cartTable tr th {
+  padding: 10px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.123);
+}
+.cartDesign .cartTable tr td {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.123);
+  padding: 7px;
+  height: 100%;
+}
+.cartDesign .cartTable tr td:nth-child(1) {
+  min-width:100px ;
 }

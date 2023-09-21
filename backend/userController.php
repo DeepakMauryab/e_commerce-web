@@ -1,19 +1,18 @@
 <?php
 
 include "./connect.php";
+session_start();
 
 if (isset($_POST['register'])) {
 
     $email = $_POST['email'];
     $mobile = $_POST['mobile'];
     $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
-
-
     $userExit = $db->query("SELECT * FROM `users` WHERE `email`= '$email' OR `mobile`= '$mobile'")->num_rows;
     if ($userExit) {
         ?>
         <script>
-            alert("user Already Exist");
+            alert("User Already Exists!");
             window.history.back();
         </script>
         <?php
@@ -27,8 +26,7 @@ if (isset($_POST['register'])) {
         if ($result) {
             ?>
             <script>
-                alert("Successfull operation");
-                window.history.back();
+                location.replace('../pages/login.php');
             </script>
             <?php
         } else {
@@ -52,25 +50,27 @@ if (isset($_POST['register'])) {
     if ($row > 0) {
         $verify = password_verify($password, $data['password']);
         if ($verify) {
+            $_SESSION['user'] = $data['id'];
             ?>
             <script>
-                alert("login Successfull");
-                window.history.back();
+                alert("Login Successfull!");
+                // window.history.back();
+                location.replace('../');
             </script>
             <?php
         } else {
             ?>
             <script>
-                alert("wrong password");
+                alert("Please Enter Correct Paaword!");
                 window.history.back();
             </script>
             <?php
         }
-        
+
     } else {
         ?>
         <script>
-            alert("please register first");
+            alert("Please Register First To Login");
             window.history.back();
         </script>
         <?php

@@ -38,27 +38,174 @@ document.addEventListener("scroll", () => {
   }
 });
 
+// const ajaxRequest = (file, parameter) => {
+//   let data;
+//   const xhttp = new XMLHttpRequest();
+//   xhttp.open("POST", `../backend/ajax/${file}.php`, true);
+//   xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+//   xhttp.send(parameter);
+//   xhttp.onreadystatechange = () => {
+//     if (xhttp.readyState == 4 && xhttp.status == 200) {
+//       data = xhttp.responseText;
+//     }
+//   };
+//   return data;
+// };
+// adding to wishlist with ajax
 Array.from(document.querySelectorAll(".wish-btn")).forEach((btn) => {
   btn.addEventListener("click", function () {
-    if (this.querySelector("i").matches(".bi-heart-fill")) {
-      this.querySelector("i").classList.add("bi-heart");
-      this.querySelector("i").classList.remove("bi-heart-fill");
-      Swal.fire("Good job!", "Product Removed from Wishlist", "success");
-    } else {
-      Swal.fire("Good job!", "Product Added To Wishlist", "success");
-      this.querySelector("i").classList.add("bi-heart-fill");
-      this.querySelector("i").classList.remove("bi-heart");
-    }
+    const xhttp = new XMLHttpRequest();
+    xhttp.open("POST", "./backend/ajax/addWish.php", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send("id=" + this.name);
+    xhttp.onreadystatechange = () => {
+      if (xhttp.readyState == 4 && xhttp.status == 200) {
+        if (xhttp.responseText === "y") {
+          Swal.fire("Good job!", "Product Added To Wishlist", "success");
+          this.querySelector("i").classList.add("bi-heart-fill");
+          this.querySelector("i").classList.remove("bi-heart");
+        } else if (xhttp.responseText === "user") {
+          Swal.fire({
+            title: "You Are Not Login!",
+            text: "Are You Want to Login?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Login",
+          }).then((result) => {
+            if (result.isConfirmed) {
+              location.replace("./pages/login.php");
+            }
+          });
+        } else {
+          this.querySelector("i").classList.add("bi-heart");
+          this.querySelector("i").classList.remove("bi-heart-fill");
+          Swal.fire("Good job!", "Product Removed from Wishlist", "success");
+        }
+        wishCount();
+      }
+    };
   });
 });
 
-Array.from(
-  document.querySelectorAll(".addToCart").forEach((btn) => {
+// adding to cart with ajax
+if (document.querySelectorAll(".addToCart")?.length > 0) {
+  Array.from(document.querySelectorAll(".addToCart"))?.forEach((btn) => {
     btn.addEventListener("click", function () {
-      this.classList.toggle("AddedCart");
+      const xhttp = new XMLHttpRequest();
+      xhttp.open("POST", "./backend/ajax/addCart.php", true);
+      xhttp.setRequestHeader(
+        "Content-type",
+        "application/x-www-form-urlencoded"
+      );
+      xhttp.send("id=" + this.name);
+      xhttp.onreadystatechange = () => {
+        if (xhttp.readyState == 4 && xhttp.status == 200) {
+          if (xhttp.responseText === "y") {
+            Swal.fire("Good job!", "Product Added To Cart", "success");
+          } else if (xhttp.responseText === "user") {
+            Swal.fire({
+              title: "You Are Not Login!",
+              text: "Are You Want to Login?",
+              icon: "warning",
+              showCancelButton: true,
+              confirmButtonColor: "#3085d6",
+              cancelButtonColor: "#d33",
+              confirmButtonText: "Login",
+            }).then((result) => {
+              if (result.isConfirmed) {
+                location.replace("./pages/login.php");
+              }
+            });
+          } else {
+            Swal.fire("Good job!", "Product Removed from Cart", "success");
+          }
+          this.classList.toggle("AddedCart");
+          countRowCart();
+        }
+      };
     });
-  })
-);
+  });
+}
 
+const countRowCart = () => {
+  let req = new XMLHttpRequest();
+  req.open("post", "./backend/ajax/cartWishCount.php", true);
+  req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  req.send("isCart=" + 1);
+  req.onreadystatechange = () => {
+    if (req.readyState == 4 && req.status == 200) {
+      document.getElementById("countCart").innerHTML = req.responseText;
+    }
+  };
+};
+countRowCart();
+const wishCount = () => {
+  let req = new XMLHttpRequest();
+  req.open("post", "./backend/ajax/cartWishCount.php", true);
+  req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  req.send("isCart=" + 0);
+  req.onreadystatechange = () => {
+    if (req.readyState == 4 && req.status == 200) {
+      document.getElementById("countWish").innerHTML = req.responseText;
+    }
+  };
+};
+wishCount();
 
+const incDecAjax = (id, state, element, cart, setTotal) => {
+  const xhttp = new XMLHttpRequest();
+  xhttp.open("POST", "../backend/ajax/qtyHandler.php", true);
+  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  xhttp.send("state=" + state + "&id=" + id + "&isCart=" + cart);
+  xhttp.onreadystatechange = () => {
+    if (xhttp.readyState == 4 && xhttp.status == 200) {
+      const data = JSON.parse(xhttp.responseText);
+      element.value = data[0];
+      setTotal.innerHTML = data[1];
+    }
+  };
+};
 
+Array.from(document.querySelectorAll(".inc"))?.forEach((btn) => {
+  btn.addEventListener("click", function () {
+    incDecAjax(
+      this.name,
+      1,
+      this.parentElement.querySelector("input"),
+      this.value,
+      this.parentElement.parentElement.parentElement.querySelector(".totalSet")
+    );
+  });
+});
+
+Array.from(document.querySelectorAll(".dec"))?.forEach((btn) => {
+  btn.addEventListener("click", function () {
+    incDecAjax(
+      this.name,
+      0,
+      this.parentElement.querySelector("input"),
+      this.value,
+      this.parentElement.parentElement.parentElement.querySelector(".totalSet")
+    );
+  });
+});
+Array.from(document.querySelectorAll(".removeCart"))?.forEach((btn) => {
+  btn.addEventListener("click", function () {
+    const xhttp = new XMLHttpRequest();
+    xhttp.open("POST", "../backend/ajax/deleteCartWish.php", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send("id=" + this.name + "&isCart=" + this.value);
+    xhttp.onreadystatechange = () => {
+      if (xhttp.readyState == 4 && xhttp.status == 200) {
+        if (xhttp.responseText) {
+          this.parentElement.parentElement.remove();
+          Swal.fire("Good job!", xhttp.responseText, "success");
+        } else {
+          Swal.fire("Some Error!", "Please Try Again Later", "error");
+        }
+      }
+    };
+  });
+});

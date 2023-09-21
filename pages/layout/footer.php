@@ -25,11 +25,19 @@
     <div class=" second links">
       <h5>Services</h5>
       <ul>
-        <li><a href="#"><i class="bi bi-chevron-right"></i> My Service 1</a></li>
-        <li><a href="#"><i class="bi bi-chevron-right"></i> My Service 2</a></li>
-        <li><a href="#"><i class="bi bi-chevron-right"></i> My Service 3</a></li>
-        <li><a href="#"><i class="bi bi-chevron-right"></i> My Service 4</a></li>
-        <li><a href="#"><i class="bi bi-chevron-right"></i> My Service 5</a></li>
+        <?php $category = $db->query('SELECT * FROM `category` limit 5');
+        $Iscategory = $category->num_rows;
+        if ($Iscategory > 0) {
+          $_ = 0;
+          while ($data = $category->fetch_assoc()) { ?>
+            <li class="flex items-center " ><a href="#"><i class="fa-solid fa-hand-point-right"></i>
+                <?php echo $data['category'] ?>
+              </a></li>
+            <?php
+          }
+        }
+        ?>
+
       </ul>
     </div>
     <div class=" third links">
@@ -67,15 +75,16 @@
 <!-- js links -->
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
 <script src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
 <script>
   AOS.init();
 </script>
-<script src="<?php echo $base_url ?>js/main.js"></script>
-<script src="<?php echo $base_url ?>js/validation.js"></script>
+<script src="<?php echo $baseurl ?>js/main.js"></script>
+<script src="<?php echo $baseurl ?>js/validation.js"></script>
 </body>
 
 </html>

@@ -43,7 +43,7 @@ const checkInput = (e, input) => {
     if (!EMAIL_REGEX.test(input.value) && input.name === "email") {
       setError(e, input, validError.email);
     } else if (!MOBILE_REGEX.test(input.value) && input.name === "mobile") {
-      setError(e, input, validError.email);
+      setError(e, input, validError.mobileNumber);
     } else if (input.name === "password") {
       password = input.value;
       if (input.value.trim() === "") {
