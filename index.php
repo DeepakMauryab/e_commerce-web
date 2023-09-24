@@ -12,40 +12,40 @@ $Isproducts = $products->num_rows;
 <div class="slider">
   <figure><img src="./Assets/slider/slider1.jpg" alt="" />
     <div class="content">
-      <h5 data-aos="fade-left" data-aos-duration="3000">We Are Since 2023</h5>
-      <h1 data-aos="fade-right" data-aos-duration="3000">Online Shopping Store</h1>
-      <h6 data-aos="fade-left" data-aos-duration="3000">
+      <h5>We Are Since 2023</h5>
+      <h1>Online Shopping Store</h1>
+      <h6>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, sit quibusdam quae exercitationem eligendi,
         tenetur saepe adipisci quas enim quisquam consequuntur non maiores neque provident facilis itaque nemo magnam
         error!
       </h6>
-      <button class="action_btn" data-aos="fade-up" data-aos-duration="3000">Read More <i
+      <button>Read More <i
           class="bi bi-arrow-right"></i></button>
     </div>
   </figure>
   <figure><img src="./Assets/slider/slider2.jpg" alt="" />
     <div class="content">
-      <h5 data-aos="fade-left" data-aos-duration="3000">We Are Since 2023</h5>
-      <h1 data-aos="fade-right" data-aos-duration="3000">Online Shopping Store</h1>
-      <h6 data-aos="fade-left" data-aos-duration="3000">
+      <h5>We Are Since 2023</h5>
+      <h1>Online Shopping Store</h1>
+      <h6>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, sit quibusdam quae exercitationem eligendi,
         tenetur saepe adipisci quas enim quisquam consequuntur non maiores neque provident facilis itaque nemo magnam
         error!
       </h6>
-      <button class="action_btn" data-aos="fade-up" data-aos-duration="3000">Read More <i
+      <button>Read More <i
           class="bi bi-arrow-right"></i></button>
     </div>
   </figure>
   <figure><img src="./Assets/slider/slider1.jpg" alt="" />
     <div class="content">
-      <h5 data-aos="fade-left" data-aos-duration="3000">We Are Since 2023</h5>
-      <h1 data-aos="fade-right" data-aos-duration="3000">Online Shopping Store</h1>
-      <h6 data-aos="fade-left" data-aos-duration="3000">
+      <h5>We Are Since 2023</h5>
+      <h1>Online Shopping Store</h1>
+      <h6>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, sit quibusdam quae exercitationem eligendi,
         tenetur saepe adipisci quas enim quisquam consequuntur non maiores neque provident facilis itaque nemo magnam
         error!
       </h6>
-      <button class="action_btn" data-aos="fade-up" data-aos-duration="3000">Read More <i
+      <button>Read More <i
           class="bi bi-arrow-right"></i></button>
     </div>
   </figure>

@@ -51,108 +51,6 @@ document.addEventListener("scroll", () => {
 //   };
 //   return data;
 // };
-// adding to wishlist with ajax
-Array.from(document.querySelectorAll(".wish-btn")).forEach((btn) => {
-  btn.addEventListener("click", function () {
-    const xhttp = new XMLHttpRequest();
-    xhttp.open("POST", "./backend/ajax/addWish.php", true);
-    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhttp.send("id=" + this.name);
-    xhttp.onreadystatechange = () => {
-      if (xhttp.readyState == 4 && xhttp.status == 200) {
-        if (xhttp.responseText === "y") {
-          Swal.fire("Good job!", "Product Added To Wishlist", "success");
-          this.querySelector("i").classList.add("bi-heart-fill");
-          this.querySelector("i").classList.remove("bi-heart");
-        } else if (xhttp.responseText === "user") {
-          Swal.fire({
-            title: "You Are Not Login!",
-            text: "Are You Want to Login?",
-            icon: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#3085d6",
-            cancelButtonColor: "#d33",
-            confirmButtonText: "Login",
-          }).then((result) => {
-            if (result.isConfirmed) {
-              location.replace("./pages/login.php");
-            }
-          });
-        } else {
-          this.querySelector("i").classList.add("bi-heart");
-          this.querySelector("i").classList.remove("bi-heart-fill");
-          Swal.fire("Good job!", "Product Removed from Wishlist", "success");
-        }
-        wishCount();
-      }
-    };
-  });
-});
-
-// adding to cart with ajax
-if (document.querySelectorAll(".addToCart")?.length > 0) {
-  Array.from(document.querySelectorAll(".addToCart"))?.forEach((btn) => {
-    btn.addEventListener("click", function () {
-      const xhttp = new XMLHttpRequest();
-      xhttp.open("POST", "./backend/ajax/addCart.php", true);
-      xhttp.setRequestHeader(
-        "Content-type",
-        "application/x-www-form-urlencoded"
-      );
-      xhttp.send("id=" + this.name);
-      xhttp.onreadystatechange = () => {
-        if (xhttp.readyState == 4 && xhttp.status == 200) {
-          if (xhttp.responseText === "y") {
-            Swal.fire("Good job!", "Product Added To Cart", "success");
-          } else if (xhttp.responseText === "user") {
-            Swal.fire({
-              title: "You Are Not Login!",
-              text: "Are You Want to Login?",
-              icon: "warning",
-              showCancelButton: true,
-              confirmButtonColor: "#3085d6",
-              cancelButtonColor: "#d33",
-              confirmButtonText: "Login",
-            }).then((result) => {
-              if (result.isConfirmed) {
-                location.replace("./pages/login.php");
-              }
-            });
-          } else {
-            Swal.fire("Good job!", "Product Removed from Cart", "success");
-          }
-          this.classList.toggle("AddedCart");
-          countRowCart();
-        }
-      };
-    });
-  });
-}
-
-const countRowCart = () => {
-  let req = new XMLHttpRequest();
-  req.open("post", "./backend/ajax/cartWishCount.php", true);
-  req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-  req.send("isCart=" + 1);
-  req.onreadystatechange = () => {
-    if (req.readyState == 4 && req.status == 200) {
-      document.getElementById("countCart").innerHTML = req.responseText;
-    }
-  };
-};
-countRowCart();
-const wishCount = () => {
-  let req = new XMLHttpRequest();
-  req.open("post", "./backend/ajax/cartWishCount.php", true);
-  req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-  req.send("isCart=" + 0);
-  req.onreadystatechange = () => {
-    if (req.readyState == 4 && req.status == 200) {
-      document.getElementById("countWish").innerHTML = req.responseText;
-    }
-  };
-};
-wishCount();
 
 const incDecAjax = (id, state, element, cart, setTotal) => {
   const xhttp = new XMLHttpRequest();
@@ -164,9 +62,29 @@ const incDecAjax = (id, state, element, cart, setTotal) => {
       const data = JSON.parse(xhttp.responseText);
       element.value = data[0];
       setTotal.innerHTML = data[1];
+      subTotalRequire();
     }
   };
 };
+
+const subTotalRequire = () => {
+  let subTotalCart = document.getElementById("subTotal-cart") ?? 0;
+  if (subTotalCart) {
+    const cartAllQty = Array.from(
+      document.querySelectorAll(".cartAllQty")
+    ).reduce((acc, item) => Number(item.value) + Number(acc), [0]);
+    const allCartTotal = Array.from(
+      document.querySelectorAll(".allCartTotal")
+    ).reduce((acc, item) => Number(item.innerHTML) + Number(acc), [0]);
+    let total = cartAllQty * allCartTotal;
+    let tax = (total * 12) / 100;
+    let Finaltotal = total + (total * 12) / 100 + 100;
+    subTotalCart.querySelector("#sTotal").innerHTML = allCartTotal?.toFixed(2);
+    subTotalCart.querySelector("#tax").innerHTML = tax?.toFixed(2);
+    subTotalCart.querySelector("#total").innerHTML = Finaltotal?.toFixed(2);
+  }
+};
+subTotalRequire();
 
 Array.from(document.querySelectorAll(".inc"))?.forEach((btn) => {
   btn.addEventListener("click", function () {
@@ -177,6 +95,7 @@ Array.from(document.querySelectorAll(".inc"))?.forEach((btn) => {
       this.value,
       this.parentElement.parentElement.parentElement.querySelector(".totalSet")
     );
+    console.log(this.parentElement.querySelector("input").value);
   });
 });
 

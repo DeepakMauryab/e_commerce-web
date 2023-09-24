@@ -45,7 +45,7 @@ $isCart = $cartData->num_rows;
 
                                         <button class='dec' value="1" name="<?php echo $data['cardId'] ?>"><i
                                                 class="bi bi-patch-minus"></i></button>
-                                        <input type="number" class="qty" placeholder="0" disabled
+                                        <input type="number" class="qty cartAllQty" placeholder="0" disabled
                                             value="<?php echo $data['quantity'] ?>" />
                                         <button class='inc' value="1" name="<?php echo $data['cardId'] ?>"><i
                                                 class="bi bi-patch-plus"></i></button>
@@ -55,7 +55,7 @@ $isCart = $cartData->num_rows;
                                     <?php echo $data['price'] ?>
                                 </td>
                                 <td>₹
-                                    <span class="totalSet">
+                                    <span class="totalSet allCartTotal">
                                         <?php echo $data['total'] ?>
                                     </span>
                                 </td>
@@ -69,16 +69,15 @@ $isCart = $cartData->num_rows;
                     </tbody>
                 </table>
             </div>
-
-
-            <div class="subtotal cf">
+            <div class="subtotal cf" id="subTotal-cart">
                 <ul>
-                    <li><span class="label">Subtotal:</span><span class="value">₹35.00</span></li>
+                    <li><span class="label">Subtotal:</span><span class="value">₹ <span id="sTotal" >35.00</span></span></li>
 
-                    <li><span class="label">Shipping:</span><span class="value">₹5.00</span></li>
+                    <li><span class="label">Shipping:</span><span class="value">₹ <span id="shipping">100.00</span></span></li>
 
-                    <li><span class="label">Tax:</span><span class="value">₹4.00</span></li>
-                    <li class="totalRow final"><span class="label">Total:</span><span class="value">₹44.00</span></li>
+                    <li><span class="label">Tax (12%):</span><span class="value">₹<span id="tax">35.00</span></span></li>
+                    <li class="totalRow final"><span class="label">Total:</span><span class="value">₹
+                            <span id="total">35.00</span></span></li>
                     <li><a href="#" class="btn continue">Checkout</a></li>
                 </ul>
             </div>

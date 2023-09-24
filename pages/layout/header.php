@@ -8,11 +8,8 @@ $baseurl = "http://" . $host . $folderName;
 $AssetsUrl = "http://" . $host . $folderName . "backend/images/";
 $path1 = $_SERVER['DOCUMENT_ROOT'] . $folderName . "backend/connect.php";
 include_once($path1);
-
 $category = $db->query('SELECT * FROM `category`');
 $Iscategory = $category->num_rows;
-// $cart = $db->query("SELECT * from `cart` where userId=$userId");
-// $wishlist = $db->query("SELECT * from `wishlist` where userId=$userId");
 ?>
 
 <head>
@@ -62,12 +59,12 @@ $Iscategory = $category->num_rows;
                             ?>
                         </ul>
                     </li>
-                    <li class="nav-link text-liner p-half"><a href="#">About</a></li>
-                    <li class="nav-link text-liner p-half"><a href="#">Contact</a></li>
+                    <li class="nav-link text-liner p-half"><a href="<?php echo $baseurl ?>pages/about-us.php">About</a></li>
+                    <li class="nav-link text-liner p-half"><a href="<?php echo $baseurl ?>pages/contact-us.php">Contact</a></li>
                 </ul>
             </div>
             <div class="nav-icons flex gap-1 p-half">
-                <a href="./pages/login.php"><i class="bi bi-person"></i></a>
+                <a href="<?php echo $baseurl ?>pages/login.php"><i class="bi bi-person"></i></a>
                 <a href="<?php echo $baseurl ?>pages/wish-list.php" class="relative"><i class="bi bi-heart"></i>
                     <span class="count" id="countWish">0</span>
                 </a>
@@ -77,5 +74,6 @@ $Iscategory = $category->num_rows;
             </div>
         </nav>
     </header>
-    
+
+
     <!--header section end -->

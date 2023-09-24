@@ -12,8 +12,8 @@ const validError = {
 
 const setError = (e, element, message) => {
   e.preventDefault();
-  if (!element.parentElement.querySelector("label")) {
-    const errorEle = document.createElement("label");
+  if (!element.parentElement.querySelector("span")) {
+    const errorEle = document.createElement("span");
     errorEle.setAttribute("class", "help-inline");
     errorEle.innerHTML = message;
     element.parentElement.append(errorEle);
@@ -23,13 +23,13 @@ const setError = (e, element, message) => {
 };
 
 const removeError = (input) => {
-  if (input.parentElement.querySelector("label")) {
+  if (input.parentElement.querySelector("span")) {
     input.parentElement.querySelector(".help-inline").remove();
   }
 };
 
 const validation = (e, form) => {
-  Array.from(form.querySelectorAll("input")).forEach((ele) => {
+  Array.from(form.querySelectorAll("input , textarea")).forEach((ele) => {
     checkInput(e, ele);
     ele.addEventListener("input", () => {
       checkInput(e, ele);

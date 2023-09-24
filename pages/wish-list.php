@@ -75,7 +75,7 @@ $isCart = $cartData->num_rows;
         } else {
             ?>
             <div class="dataNotFound">
-                <figure>
+                <figure class="wishNoImg">
                     <img src="../Assets/images/nowish.png" alt="">
                 </figure>
                 <div class="flex gap-1">

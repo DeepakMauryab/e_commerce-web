@@ -1,3 +1,6 @@
+
+
+
 .text-liner {
   position: relative;
 }
@@ -16,15 +19,50 @@
   transform: scaleX(1);
 }
 
-.slider figure.slick-active {
+.slider figure.slick-active img {
   animation: sliderImage 3s ease-out;
 }
+.slider figure.slick-active .content h1{
+  animation: sliderTexth1 2s ease-out;
+}
+.slider figure.slick-active .content h6,
+.slider figure.slick-active .content h5{
+  animation: sliderTexth5h6 2s ease-out;
+}
+.slider figure.slick-active .content button{
+  animation: sliderBtn 2s ease-out;
+}
+
 @keyframes sliderImage {
   0% {
     transform: scale(1.2);
   }
   100% {
     transform: scale(1);
+  }
+}
+@keyframes sliderTexth1 {
+  0% {
+    transform: translateX(-50px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+@keyframes sliderTexth5h6 {
+  0% {
+    transform: translateX(50px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+@keyframes sliderBtn {
+  0% {
+    transform: translateY(50px);
+  }
+  100% {
+    transform: translateY(0);
   }
 }
 /* buttons  */
@@ -190,6 +228,9 @@ button:active{
 }
 .dataNotFound figure{
   width: 25%;
+}
+.dataNotFound figure.wishNoImg{
+  width: 20%;
 }
 .dataNotFound a{
   border: 1px solid rgba(0, 0, 0, 0.296);

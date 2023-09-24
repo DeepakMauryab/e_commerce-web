@@ -103,6 +103,30 @@ a {
 .p-5 {
   padding: 5rem;
 }
+.px-half {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+.px-1 {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+.px-2 {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+.px-3 {
+  padding-left: 3rem;
+  padding-right: 3rem;
+}
+.px-4 {
+  padding-left: 4rem;
+  padding-right: 4rem;
+}
+.px-5 {
+  padding-left: 5rem;
+  padding-right: 5rem;
+}
 /* margin section start */
 .m-half {
   margin: 0.5rem;

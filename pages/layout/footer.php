@@ -30,7 +30,7 @@
         if ($Iscategory > 0) {
           $_ = 0;
           while ($data = $category->fetch_assoc()) { ?>
-            <li class="flex items-center " ><a href="#"><i class="fa-solid fa-hand-point-right"></i>
+            <li class="flex items-center "><a href="#"><i class="fa-solid fa-hand-point-right"></i>
                 <?php echo $data['category'] ?>
               </a></li>
             <?php
@@ -85,6 +85,12 @@
 </script>
 <script src="<?php echo $baseurl ?>js/main.js"></script>
 <script src="<?php echo $baseurl ?>js/validation.js"></script>
+
+
+<?php
+$ajaxJsPath = $_SERVER['DOCUMENT_ROOT'] . $folderName . "pages/layout/ajaxJS.php";
+include_once($ajaxJsPath);
+?>
 </body>
 
 </html>
