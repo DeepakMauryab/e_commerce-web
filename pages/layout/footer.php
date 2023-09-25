@@ -72,6 +72,8 @@
 <div class="bottom-bar">
   <p class="text-center">Copyright © 2023, Online Shopping Store Designed & Developed by BCA 3rd Year</p>
 </div>
+
+
 <!-- js links -->
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
@@ -80,6 +82,7 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
+<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 <script>
   AOS.init();
 </script>

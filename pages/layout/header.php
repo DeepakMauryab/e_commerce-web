@@ -28,6 +28,17 @@ $Iscategory = $category->num_rows;
 </head>
 
 <body>
+
+    <!-- loader section  -->
+    <div class=" all_center" id="loader">
+
+        <lottie-player style="width: 200px; height:200px;" src="<?php echo $baseurl ?>Assets/lottie/loader.json"
+            background="transparent" speed="1" loop autoplay></lottie-player>
+    </div>
+    <div class="all_center" id="AddCartAnim">
+        <lottie-player style="width: 500px; height:500px;" src="<?php echo $baseurl ?>Assets/lottie/cart.json"
+            background="transparent" speed="1" loop autoplay></lottie-player>
+    </div>
     <div class="topHead">
         <span>All Your Favourite Is Here!</span>
     </div>
@@ -42,7 +53,7 @@ $Iscategory = $category->num_rows;
             <div class="nav-tab">
                 <ul class="nav-item flex gap-1">
                     <li class="nav-link text-liner p-half"> <a href="<?php echo $baseurl ?>">Home</a></li>
-                    <li class="nav-link text-liner p-half"><a href="#">Shop</a></li>
+                    <li class="nav-link text-liner p-half"><a href="<?php echo $baseurl ?>pages/shop.php">Shop</a></li>
                     <li class="nav-link text-liner p-half dropParent">
                         <a href="#">Categories</a>
                         <ul class="dropdown">
@@ -59,8 +70,10 @@ $Iscategory = $category->num_rows;
                             ?>
                         </ul>
                     </li>
-                    <li class="nav-link text-liner p-half"><a href="<?php echo $baseurl ?>pages/about-us.php">About</a></li>
-                    <li class="nav-link text-liner p-half"><a href="<?php echo $baseurl ?>pages/contact-us.php">Contact</a></li>
+                    <li class="nav-link text-liner p-half"><a href="<?php echo $baseurl ?>pages/about-us.php">About</a>
+                    </li>
+                    <li class="nav-link text-liner p-half"><a
+                            href="<?php echo $baseurl ?>pages/contact-us.php">Contact</a></li>
                 </ul>
             </div>
             <div class="nav-icons flex gap-1 p-half">

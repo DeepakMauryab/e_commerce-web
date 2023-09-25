@@ -1,6 +1,6 @@
-
-
-
+* {
+  scroll-behavior: smooth;
+}
 .text-liner {
   position: relative;
 }
@@ -22,14 +22,14 @@
 .slider figure.slick-active img {
   animation: sliderImage 3s ease-out;
 }
-.slider figure.slick-active .content h1{
+.slider figure.slick-active .content h1 {
   animation: sliderTexth1 2s ease-out;
 }
 .slider figure.slick-active .content h6,
-.slider figure.slick-active .content h5{
+.slider figure.slick-active .content h5 {
   animation: sliderTexth5h6 2s ease-out;
 }
-.slider figure.slick-active .content button{
+.slider figure.slick-active .content button {
   animation: sliderBtn 2s ease-out;
 }
 
@@ -214,32 +214,67 @@
   display: none;
 }
 
-button{
+button {
   transition: all 1s ease-out;
 }
-button:active{
-  scale: .9;
+button:active {
+  scale: 0.9;
 }
-.dataNotFound{
+.dataNotFound {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 }
-.dataNotFound figure{
+.dataNotFound figure {
   width: 25%;
 }
-.dataNotFound figure.wishNoImg{
+.dataNotFound figure.wishNoImg {
   width: 20%;
 }
-.dataNotFound a{
+.dataNotFound a {
   border: 1px solid rgba(0, 0, 0, 0.296);
   padding: 5px 30px;
   color: #000;
-  font-size: .9rem;
+  font-size: 0.9rem;
   font-weight: 600;
-  letter-spacing: .3px;
+  letter-spacing: 0.3px;
   display: flex;
   gap: 1rem;
   background-color: #faeaa1;
+}
+
+::-webkit-scrollbar {
+  width: 9px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #fff;
+  box-shadow: inset 0px 0px 6px rgb(127, 127, 127);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--theme-color);
+  border: 2px solid #000000;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+#loader, #AddCartAnim {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  background: #000000a5;
+  z-index: 1000;
+  transition: all .7s ease-in;
+}
+
+#AddCartAnim{
+  visibility: hidden;
+  opacity: 0;
 }

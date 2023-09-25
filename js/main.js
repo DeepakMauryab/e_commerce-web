@@ -128,3 +128,22 @@ Array.from(document.querySelectorAll(".removeCart"))?.forEach((btn) => {
     };
   });
 });
+
+window.addEventListener("load", (e) => {
+  if (localStorage.getItem("hasCodeRunBefore") === null) {
+    localStorage.setItem("hasCodeRunBefore", true);
+    document.getElementById("loader").style.background = "#fff";
+    setTimeout(() => {
+      document.getElementById("loader").style.visibility = "hidden";
+      document.getElementById("loader").style.opacity = 0;
+      document.getElementById("loader").style.scale = 2;
+    }, 3000);
+  } else {
+    setTimeout(() => {
+      document.getElementById("loader").style.visibility = "hidden";
+      document.getElementById("loader").style.opacity = 0;
+      document.getElementById("loader").style.scale = 2;
+      // document.getElementById("loader").parentElement.style.background = "#fff";
+    }, 700);
+  }
+});
