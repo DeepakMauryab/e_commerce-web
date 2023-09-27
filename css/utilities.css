@@ -156,6 +156,10 @@
   gap: 1rem;
   grid-template-columns: repeat(auto-fit, minmax(10px, calc(25% - 1rem)));
 }
+.shop .boxes {
+  gap: .7rem;
+  grid-template-columns: repeat(auto-fit, minmax(10px, calc(33.33% - 1rem)));
+}
 
 .count {
   position: absolute;

@@ -1,5 +1,5 @@
-<audio hidden src="<?php $baseurl ?>Assets/sound/addWish.mp3" id="addWish"></audio>
-<audio hidden src="<?php $baseurl ?>Assets/sound/addCart.mp3" id="addCart"></audio>
+<audio hidden src="<?php echo $baseurl ?>Assets/sound/addWish.mp3" id="addWish"></audio>
+<audio hidden src="<?php echo $baseurl ?>Assets/sound/addCart.mp3" id="addCart"></audio>
 
 <script>
     // adding tooltip on cart and wishlist nav icons count start
@@ -57,7 +57,7 @@
                             confirmButtonText: "Login",
                         }).then((result) => {
                             if (result.isConfirmed) {
-                                location.replace("./pages/login.php");
+                                location.replace("<?php echo $baseurl ?>pages/login.php");
                             }
                         });
                     } else {
@@ -73,7 +73,7 @@
                             confirmButtonText: "Login",
                         }).then((result) => {
                             if (result.isConfirmed) {
-                                location.replace("./pages/login.php");
+                                location.replace("<?php echo $baseurl ?>pages/wishlist.php");
                             }
                         });
                     }
@@ -110,7 +110,7 @@
                                 confirmButtonText: "Go To Cart",
                             }).then((result) => {
                                 if (result.isConfirmed) {
-                                    location.replace("<?php echo $baseurl ?>pages/login.php");
+                                    location.replace("<?php echo $baseurl ?>pages/cart.php");
                                 }
                             });
                         }, 3000)
@@ -125,7 +125,7 @@
                             confirmButtonText: "Login",
                         }).then((result) => {
                             if (result.isConfirmed) {
-                                location.replace("./pages/login.php");
+                                location.replace("<?php echo $baseurl ?>pages/login.php");
                             }
                         });
                     } else {

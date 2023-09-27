@@ -242,6 +242,12 @@ a {
 .w-25 {
   width: 25%;
 }
+.w-20 {
+  width: 20%;
+}
+.w-80 {
+  width: 80%;
+}
 /* width section :end */
 /* height section start  */
 .h-100 {

@@ -684,11 +684,10 @@ form textarea {
   width: 20%;
   height: 30vh;
 }
-.contactInfo .contact-box:hover i{
-  scale: .9;
+.contactInfo .contact-box:hover i {
+  scale: 0.9;
   border: 2px solid #ffd340;
   background: transparent;
-
 }
 .contactInfo .contact-box i {
   display: inline-flex;
@@ -704,8 +703,8 @@ form textarea {
   border: 2px solid transparent;
 }
 .contactInfo .contact-box h3 {
-  margin: 2rem 0 .1rem 0;
-  font-size: .8rem;
+  margin: 2rem 0 0.1rem 0;
+  font-size: 0.8rem;
   font-weight: 600;
 }
 .contactInfo .contact-box a {
@@ -714,7 +713,99 @@ form textarea {
   font-weight: 600;
   text-align: center;
 }
-.shop{
+.shop {
   padding-top: 1rem;
   padding-bottom: 1rem;
+}
+.shop .product_box {
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+}
+.shop .sidebar {
+  border: 1px solid #00000034;
+  box-shadow: -20px 0px 40px rgba(255, 232, 27, 0.2);
+  padding: 1rem;
+  border-radius: 10px;
+  position: sticky;
+  top: 10%;
+  height: 80vh;
+  overflow: auto;
+}
+.shop .sidebar .filter p {
+  margin-bottom: 0.3rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+.shop .sidebar .filter label {
+  margin-bottom: 0.3rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.8px;
+}
+.panel .seprator {
+  width: 7%;
+  /* margin-top: 28px; */
+  margin-left: 5px;
+}
+.panel .slick-dots li {
+  display: none;
+}
+
+.panel .range-slider label {
+  font-size: 0.8rem;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+.panel .range-slider input.form-control {
+  height: 30px;
+  width: 100%;
+  text-align: center;
+}
+
+.panel .slider {
+  position: relative;
+  background-color: #ddd;
+  border-radius: 5px;
+  height: 4px;
+  margin: 15px 10px;
+}
+
+.panel .slider .progress {
+  position: absolute;
+  height: 4px;
+  background: #dfae26;
+  content: "";
+  left: 0%;
+  right: 0%;
+  border-radius: 10px;
+}
+
+.panel .range-input {
+  position: relative;
+}
+
+.panel .range-input input {
+  position: absolute;
+  top: -19px;
+  height: 4px;
+  -webkit-appearance: none;
+  cursor: pointer;
+  width: 100%;
+  pointer-events: none;
+  background: none;
+  border: none;
+  outline: none;
+}
+
+.panel .range-input input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  pointer-events: auto;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #444;
 }
