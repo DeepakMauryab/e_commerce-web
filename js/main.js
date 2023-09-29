@@ -189,3 +189,93 @@ rangeInput.forEach((input) => {
     }
   });
 });
+
+// filter in shop page
+const setAllProducts = (catId = [], stock = [], min = 0, max = 100000) => {
+  const xhttp = new XMLHttpRequest();
+  xhttp.open("POST", `../backend/ajax/getProducts.php`, true);
+  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  xhttp.send(
+    "catId=" +
+      catId?.toString() +
+      "&stock=" +
+      stock +
+      "&min=" +
+      min +
+      "&max=" +
+      max
+  );
+  xhttp.onreadystatechange = () => {
+    if (xhttp.readyState == 4 && xhttp.status == 200) {
+      document.getElementById("products").innerHTML = "";
+      const products = JSON.parse(xhttp.responseText);
+      document.getElementById("prtCount").innerHTML = products.length;
+      products.map((item) => {
+        let card = document.createElement("div");
+        card.className = "product_box relative";
+        card.setAttribute("data-aos", "zoom-in");
+        card.setAttribute("data-aos-duration", "2000");
+        card.innerHTML = `<div class="img"><figure><img src="../backend/images/${
+          item.image1
+        }" alt="" /><img src="../Assets/products/iphone2.png" alt="" class="secondImg" /></div></figure><div class="content"><p class="name">${
+          item.name
+        }</p><p class="categoryTitle">${
+          item.category
+        }</p><p class="flex jt-end price items-center"><span>&#x20B9;${Number(
+          item.price
+        ).toFixed(2)}</span> <del>${
+          Number(item.price) + 100
+        }</del></p><div class="buttons"><button name="${
+          item.prd_id
+        }" class="addToCart"><span><i class="bi bi-cart-fill"></i>Add toCart</span> <span><i class="bi bi-cart"></i></span> <span><i class="bi bi-clipboard-check-fill"></i>Added toCart</span></button></div></div><button name="${
+          item.prd_id
+        }" class="wish-btn"><i class="bi bi-heart"></i></button>`;
+        document.getElementById("products").appendChild(card);
+      });
+    }
+    addToWish(document.querySelectorAll(".wish-btn"));
+    addToCart(document.querySelectorAll(".addToCart"));
+    Array.from(document.querySelectorAll(".addToCart"))?.forEach((item) => {
+      checkWishCart(item, item.name, 1);
+    });
+    Array.from(document.querySelectorAll(".wish-btn"))?.forEach((item) => {
+      checkWishCart(item, item.name, 0);
+    });
+  };
+};
+
+let catArr = [];
+let stock = [];
+let min = 0;
+let max = 100000;
+if (document.querySelector("#sideBarFilter")) {
+  Array.from(
+    document.querySelector("#sideBarFilter").querySelectorAll("input")
+  ).forEach((item) =>
+    item.addEventListener("change", function () {
+      console.log(catArr);
+      if (this.name === "cat") {
+        if (this.checked) {
+          catArr.push(this.value);
+        } else {
+          catArr = catArr.filter((item) => item !== this.value);
+        }
+      }
+      if (this.name === "stock") {
+        if (this.checked) {
+          stock = this.value;
+        } else {
+          stock = 0;
+        }
+      }
+      if (this.name === "min") {
+        min = this.value;
+      }
+      if (this.name === "max") {
+        max = this.value;
+      }
+
+      setAllProducts(catArr, stock, min, max);
+    })
+  );
+}

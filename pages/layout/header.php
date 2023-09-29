@@ -61,9 +61,11 @@ $Iscategory = $category->num_rows;
                             if ($Iscategory > 0) {
                                 $_ = 0;
                                 while ($data = $category->fetch_assoc()) { ?>
-                                    <li><a href="#">
+                                    <li>
+                                        <a href="<?php echo $baseurl . 'pages/shop.php?catId=' . $data['id'] ?>">
                                             <?php echo $data['category'] ?>
-                                        </a></li>
+                                        </a>
+                                    </li>
                                     <?php
                                 }
                             }
@@ -87,6 +89,8 @@ $Iscategory = $category->num_rows;
             </div>
         </nav>
     </header>
+
+
 
 
     <!--header section end -->

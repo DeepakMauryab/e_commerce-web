@@ -1,7 +1,12 @@
 <?php include "./layout/header.php";
 
-$cartData = $db->query('SELECT *, cart.id as cardId FROM `cart` JOIN `products` on products.id= cart.productId');
-$isCart = $cartData->num_rows;
+
+$isCart = 0;
+if (isset($_SESSION['user'])) {
+    $user = $_SESSION['user'];
+    $cartData = $db->query("SELECT *, cart.id as cardId FROM `cart` JOIN `products` on products.id= cart.productId Where  userId= $user");
+    $isCart = $cartData->num_rows;
+}
 ?>
 
 
@@ -71,9 +76,10 @@ $isCart = $cartData->num_rows;
             </div>
             <div class="subtotal cf" id="subTotal-cart">
                 <ul>
-                    <li><span class="label">Subtotal:</span><span class="value">₹ <span id="sTotal" >35.00</span></span></li>
+                    <li><span class="label">Subtotal:</span><span class="value">₹ <span id="sTotal">35.00</span></span></li>
 
-                    <li><span class="label">Shipping:</span><span class="value">₹ <span id="shipping">100.00</span></span></li>
+                    <li><span class="label">Shipping:</span><span class="value">₹ <span id="shipping">100.00</span></span>
+                    </li>
 
                     <li><span class="label">Tax (12%):</span><span class="value">₹<span id="tax">35.00</span></span></li>
                     <li class="totalRow final"><span class="label">Total:</span><span class="value">₹
@@ -90,9 +96,18 @@ $isCart = $cartData->num_rows;
                     <img src="../Assets/images/cart1.png" alt="">
                 </figure>
 
-                <div class="flex gap-1"> <a href="<?php echo $baseurl ?>pages/login.php"><i
-                            class="bi bi-person"></i>Login</a>
-                    <a href="#"><i class="bi bi-bag-check"></i> Shop</a>
+                <div class="flex gap-1">
+
+                    <?php if (isset($_SESSION['user'])) {
+                        ?>
+                        <a href="<?php echo $baseurl ?>"><i class="bi bi-house"></i>Back to Home</a>
+                        <?php
+                    } else {
+                        ?>
+                        <a href="<?php echo $baseurl ?>pages/login.php"><i class="bi bi-person"></i>Login</a>
+                        <?php
+                    } ?>
+                    <a href="<?php echo $baseurl ?>pages/shop.php"><i class="bi bi-bag-check"></i> Shop</a>
                 </div>
             </div>
             <?php

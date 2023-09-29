@@ -1,7 +1,11 @@
 <?php include "./layout/header.php";
 
-$cartData = $db->query('SELECT *, wishlist.id as cardId FROM `wishlist` JOIN `products` on products.id= wishlist.productId');
-$isCart = $cartData->num_rows;
+$isCart = 0;
+if (isset($_SESSION['user'])) {
+    $user = $_SESSION['user'];
+    $cartData = $db->query("SELECT *, wishlist.id as cardId FROM `wishlist` JOIN `products` on products.id= wishlist.productId Where userId= $user");
+    $isCart = $cartData->num_rows;
+}
 ?>
 
 
@@ -89,7 +93,7 @@ $isCart = $cartData->num_rows;
                         <a href="<?php echo $baseurl ?>pages/login.php"><i class="bi bi-person"></i>Login</a>
                         <?php
                     } ?>
-                    <a href="#"><i class="bi bi-bag-check"></i> Shop</a>
+                    <a href="<?php echo $baseurl ?>pages/shop.php"><i class="bi bi-bag-check"></i> Shop</a>
                 </div>
             </div>
             <?php

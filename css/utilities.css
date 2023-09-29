@@ -157,6 +157,7 @@
   grid-template-columns: repeat(auto-fit, minmax(10px, calc(25% - 1rem)));
 }
 .shop .boxes {
+  margin-top: 1rem;
   gap: .7rem;
   grid-template-columns: repeat(auto-fit, minmax(10px, calc(33.33% - 1rem)));
 }
@@ -282,3 +283,5 @@ button:active {
   visibility: hidden;
   opacity: 0;
 }
+
+

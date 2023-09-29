@@ -2,6 +2,7 @@
 <audio hidden src="<?php echo $baseurl ?>Assets/sound/addCart.mp3" id="addCart"></audio>
 
 <script>
+
     // adding tooltip on cart and wishlist nav icons count start
 
     const addWishsound = document.getElementById('addWish');
@@ -33,112 +34,119 @@
     // adding tooltip on cart and wishlist nav icons count end
 
     // adding to wishlist with ajax
-    Array.from(document.querySelectorAll(".wish-btn")).forEach((btn) => {
-        btn.addEventListener("click", function () {
-            const xhttp = new XMLHttpRequest();
-            xhttp.open("POST", "<?php echo $baseurl ?>backend/ajax/addWish.php", true);
-            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            xhttp.send("id=" + this.name);
-            xhttp.onreadystatechange = () => {
-                if (xhttp.readyState == 4 && xhttp.status == 200) {
-                    addWishsound.play()
-                    if (xhttp.responseText === "y") {
-                        Swal.fire("Good job!", "Product Added To Wishlist", "success");
-                        this.querySelector("i").classList.add("bi-heart-fill");
-                        this.querySelector("i").classList.remove("bi-heart");
-                    } else if (xhttp.responseText === "user") {
-                        Swal.fire({
-                            title: "You Are Not Login!",
-                            text: "Are You Want to Login?",
-                            icon: "warning",
-                            showCancelButton: true,
-                            confirmButtonColor: "#3085d6",
-                            cancelButtonColor: "#d33",
-                            confirmButtonText: "Login",
-                        }).then((result) => {
-                            if (result.isConfirmed) {
-                                location.replace("<?php echo $baseurl ?>pages/login.php");
-                            }
-                        });
-                    } else {
-                        this.querySelector("i").classList.add("bi-heart");
-                        this.querySelector("i").classList.remove("bi-heart-fill");
-                        Swal.fire({
-                            title: "Good job!",
-                            text: "Product Removed from Wishlist",
-                            icon: "success",
-                            showCancelButton: true,
-                            confirmButtonColor: "#3085d6",
-                            cancelButtonColor: "#d33",
-                            confirmButtonText: "Login",
-                        }).then((result) => {
-                            if (result.isConfirmed) {
-                                location.replace("<?php echo $baseurl ?>pages/wishlist.php");
-                            }
-                        });
-                    }
-                    wishCount();
-                }
-            };
-        });
-    });
-    // adding to cart with ajax
-
-    Array.from(document.querySelectorAll(".addToCart"))?.forEach((btn) => {
-        btn.addEventListener("click", function () {
-
-            const xhttp = new XMLHttpRequest();
-            xhttp.open("POST", "<?php echo $baseurl ?>backend/ajax/addCart.php", true);
-            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            xhttp.send("id=" + this.name);
-            xhttp.onreadystatechange = () => {
-                if (xhttp.readyState == 4 && xhttp.status == 200) {
-                    addCartsound.play();
-                    if (xhttp.responseText === "y") {
-                        document.getElementById('AddCartAnim').style.visibility = "visible";
-                        document.getElementById('AddCartAnim').style.opacity = 1;
-                        setTimeout(() => {
-                            document.getElementById('AddCartAnim').style.visibility = "hidden";
-                            document.getElementById('AddCartAnim').style.opacity = 0;
+    const addToWish = (items) => {
+        Array.from(items).forEach((btn) => {
+            btn.addEventListener("click", function () {
+                const xhttp = new XMLHttpRequest();
+                xhttp.open("POST", "<?php echo $baseurl ?>backend/ajax/addWish.php", true);
+                xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                xhttp.send("id=" + this.name);
+                xhttp.onreadystatechange = () => {
+                    if (xhttp.readyState == 4 && xhttp.status == 200) {
+                        addWishsound.play()
+                        if (xhttp.responseText === "y") {
+                            Swal.fire("Good job!", "Product Added To Wishlist", "success");
+                            this.querySelector("i").classList.add("bi-heart-fill");
+                            this.querySelector("i").classList.remove("bi-heart");
+                        } else if (xhttp.responseText === "user") {
+                            Swal.fire({
+                                title: "You Are Not Login!",
+                                text: "Are You Want to Login?",
+                                icon: "warning",
+                                showCancelButton: true,
+                                confirmButtonColor: "#3085d6",
+                                cancelButtonColor: "#d33",
+                                confirmButtonText: "Login",
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    location.replace("<?php echo $baseurl ?>pages/login.php");
+                                }
+                            });
+                        } else {
+                            this.querySelector("i").classList.add("bi-heart");
+                            this.querySelector("i").classList.remove("bi-heart-fill");
                             Swal.fire({
                                 title: "Good job!",
-                                text: "Product Added To Cart",
+                                text: "Product Removed from Wishlist",
                                 icon: "success",
                                 showCancelButton: true,
                                 confirmButtonColor: "#3085d6",
                                 cancelButtonColor: "#d33",
-                                confirmButtonText: "Go To Cart",
+                                confirmButtonText: "Login",
                             }).then((result) => {
                                 if (result.isConfirmed) {
-                                    location.replace("<?php echo $baseurl ?>pages/cart.php");
+                                    location.replace("<?php echo $baseurl ?>pages/wishlist.php");
                                 }
                             });
-                        }, 3000)
-                    } else if (xhttp.responseText === "user") {
-                        Swal.fire({
-                            title: "You Are Not Login!",
-                            text: "Are You Want to Login?",
-                            icon: "warning",
-                            showCancelButton: true,
-                            confirmButtonColor: "#3085d6",
-                            cancelButtonColor: "#d33",
-                            confirmButtonText: "Login",
-                        }).then((result) => {
-                            if (result.isConfirmed) {
-                                location.replace("<?php echo $baseurl ?>pages/login.php");
-                            }
-                        });
-                    } else {
-                        Swal.fire("Good job!", "Product Removed from Cart", "success");
+                        }
+                        wishCount();
                     }
-                    this.classList.toggle("AddedCart");
-                    countRowCart();
-                }
-            };
+                };
+            });
         });
-    });
+    }
+
+    addToWish(document.querySelectorAll(".wish-btn"));
+    // adding to cart with ajax
 
 
+    const addToCart = (items) => {
+        Array.from(items)?.forEach((btn) => {
+            btn.addEventListener("click", function () {
+
+                const xhttp = new XMLHttpRequest();
+                xhttp.open("POST", "<?php echo $baseurl ?>backend/ajax/addCart.php", true);
+                xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                xhttp.send("id=" + this.name);
+                xhttp.onreadystatechange = () => {
+                    if (xhttp.readyState == 4 && xhttp.status == 200) {
+                        addCartsound.play();
+                        if (xhttp.responseText === "y") {
+                            document.getElementById('AddCartAnim').style.visibility = "visible";
+                            document.getElementById('AddCartAnim').style.opacity = 1;
+                            setTimeout(() => {
+                                document.getElementById('AddCartAnim').style.visibility = "hidden";
+                                document.getElementById('AddCartAnim').style.opacity = 0;
+                                Swal.fire({
+                                    title: "Good job!",
+                                    text: "Product Added To Cart",
+                                    icon: "success",
+                                    showCancelButton: true,
+                                    confirmButtonColor: "#3085d6",
+                                    cancelButtonColor: "#d33",
+                                    confirmButtonText: "Go To Cart",
+                                }).then((result) => {
+                                    if (result.isConfirmed) {
+                                        location.replace("<?php echo $baseurl ?>pages/cart.php");
+                                    }
+                                });
+                            }, 3000)
+                        } else if (xhttp.responseText === "user") {
+                            Swal.fire({
+                                title: "You Are Not Login!",
+                                text: "Are You Want to Login?",
+                                icon: "warning",
+                                showCancelButton: true,
+                                confirmButtonColor: "#3085d6",
+                                cancelButtonColor: "#d33",
+                                confirmButtonText: "Login",
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    location.replace("<?php echo $baseurl ?>pages/login.php");
+                                }
+                            });
+                        } else {
+                            Swal.fire("Good job!", "Product Removed from Cart", "success");
+                        }
+                        this.classList.toggle("AddedCart");
+                        countRowCart();
+                    }
+                };
+            });
+        });
+    }
+
+    addToCart(document.querySelectorAll(".addToCart"));
 
     const checkWishCart = (btn, id, isCart) => {
 
