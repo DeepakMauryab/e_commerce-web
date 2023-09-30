@@ -17,15 +17,15 @@ $Iscategory = $category->num_rows;
                         </div>
                         <div class="range-slider">
                             <label for="maxPrice">Max Price</label>
-                            <input type="number" name="max" id="maxPrice" value="500" class="form-control input-max">
+                            <input type="number" name="max" id="maxPrice" value="1000" class="form-control input-max">
                         </div>
                     </div>
                     <div class="slider">
                         <div class="progress"></div>
                     </div>
                     <div class="range-input" id="ranger">
-                        <input type="range" name="min" id="minBtn" class="range-min" min="1" max="500" value="1">
-                        <input type="range" name="max" id="maxBtn" class="range-max" min="1" max="500" value="500">
+                        <input type="range" name="min" id="minBtn" class="range-min" min="1" max="1000" value="1">
+                        <input type="range" name="max" id="maxBtn" class="range-max" min="1" max="1000" value="1000">
                     </div>
                 </div>
             </div>

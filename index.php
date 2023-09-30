@@ -4,7 +4,7 @@ include "./pages/layout/header.php";
 
 $category = $db->query('SELECT * FROM `category`');
 $Iscategory = $category->num_rows;
-$products = $db->query('SELECT *,products.id AS prd_id, category.id AS cat_id FROM `products` Inner JOIN category on products.categoryId= category.id');
+$products = $db->query('SELECT *,products.id AS prd_id, category.id AS cat_id FROM `products` Inner JOIN category on products.categoryId= category.id  order by prd_id desc limit 8');
 $Isproducts = $products->num_rows;
 ?>
 
@@ -19,8 +19,7 @@ $Isproducts = $products->num_rows;
         tenetur saepe adipisci quas enim quisquam consequuntur non maiores neque provident facilis itaque nemo magnam
         error!
       </h6>
-      <button>Read More <i
-          class="bi bi-arrow-right"></i></button>
+      <button>Read More <i class="bi bi-arrow-right"></i></button>
     </div>
   </figure>
   <figure><img src="./Assets/slider/slider2.jpg" alt="" />
@@ -32,8 +31,7 @@ $Isproducts = $products->num_rows;
         tenetur saepe adipisci quas enim quisquam consequuntur non maiores neque provident facilis itaque nemo magnam
         error!
       </h6>
-      <button>Read More <i
-          class="bi bi-arrow-right"></i></button>
+      <button>Read More <i class="bi bi-arrow-right"></i></button>
     </div>
   </figure>
   <figure><img src="./Assets/slider/slider1.jpg" alt="" />
@@ -45,8 +43,7 @@ $Isproducts = $products->num_rows;
         tenetur saepe adipisci quas enim quisquam consequuntur non maiores neque provident facilis itaque nemo magnam
         error!
       </h6>
-      <button>Read More <i
-          class="bi bi-arrow-right"></i></button>
+      <button>Read More <i class="bi bi-arrow-right"></i></button>
     </div>
   </figure>
 </div>
@@ -54,13 +51,16 @@ $Isproducts = $products->num_rows;
 
 <div class="category relative">
   <div class="container section">
-    <h1 class="heading">Our Categories</h1>
+    <div class="flex flex-column" >
+      <span class="headingTag" >Category</span>
+      <h1 class="heading">Our Categories</h1>
+    </div>
     <div class="boxes">
       <?php
       if ($Iscategory > 0) {
         $_ = 0;
         while ($data = $category->fetch_assoc()) { ?>
-          <a href="#" class="category_box" data-aos="fade-up" data-aos-duration="<?php echo $_ ?>000">
+          <a href="<?php echo $baseurl . 'pages/shop.php?catId=' . $data['id'] ?>" class="category_box" data-aos="fade-up" data-aos-duration="<?php echo $_ ?>000">
             <figure class="zoomBox">
               <img src="./Assets/products/prd1.jpg" alt="product1" />
             </figure>
@@ -99,7 +99,10 @@ $Isproducts = $products->num_rows;
 
 <div class="products mt-2 relative">
   <div class="container section">
-    <h1 class="heading">Our Products</h1>
+  <div class="flex flex-column" >
+      <span class="headingTag" >Products</span>
+      <h1 class="heading">Our Products</h1>
+    </div>
     <div class="boxes">
       <?php
       if ($Isproducts > 0) {

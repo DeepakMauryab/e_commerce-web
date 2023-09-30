@@ -1,5 +1,6 @@
 <audio hidden src="<?php echo $baseurl ?>Assets/sound/addWish.mp3" id="addWish"></audio>
 <audio hidden src="<?php echo $baseurl ?>Assets/sound/addCart.mp3" id="addCart"></audio>
+<audio hidden src="<?php echo $baseurl ?>Assets/sound/start.mp3" id="startupSound"></audio>
 
 <script>
 
@@ -7,6 +8,8 @@
 
     const addWishsound = document.getElementById('addWish');
     const addCartsound = document.getElementById('addCart');
+
+
     const countRowCart = () => {
         let req = new XMLHttpRequest();
         req.open("post", "<?php echo $baseurl ?>backend/ajax/cartWishCount.php", true);
@@ -65,19 +68,7 @@
                         } else {
                             this.querySelector("i").classList.add("bi-heart");
                             this.querySelector("i").classList.remove("bi-heart-fill");
-                            Swal.fire({
-                                title: "Good job!",
-                                text: "Product Removed from Wishlist",
-                                icon: "success",
-                                showCancelButton: true,
-                                confirmButtonColor: "#3085d6",
-                                cancelButtonColor: "#d33",
-                                confirmButtonText: "Login",
-                            }).then((result) => {
-                                if (result.isConfirmed) {
-                                    location.replace("<?php echo $baseurl ?>pages/wishlist.php");
-                                }
-                            });
+                            Swal.fire("Good job!", "Product Removed from Wishlist", "success");
                         }
                         wishCount();
                     }
@@ -94,6 +85,8 @@
         Array.from(items)?.forEach((btn) => {
             btn.addEventListener("click", function () {
 
+
+
                 const xhttp = new XMLHttpRequest();
                 xhttp.open("POST", "<?php echo $baseurl ?>backend/ajax/addCart.php", true);
                 xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -101,6 +94,7 @@
                 xhttp.onreadystatechange = () => {
                     if (xhttp.readyState == 4 && xhttp.status == 200) {
                         addCartsound.play();
+                        console.log(xhttp.responseText);
                         if (xhttp.responseText === "y") {
                             document.getElementById('AddCartAnim').style.visibility = "visible";
                             document.getElementById('AddCartAnim').style.opacity = 1;
@@ -121,6 +115,7 @@
                                     }
                                 });
                             }, 3000)
+                            this.classList.toggle("AddedCart");
                         } else if (xhttp.responseText === "user") {
                             Swal.fire({
                                 title: "You Are Not Login!",
@@ -137,8 +132,8 @@
                             });
                         } else {
                             Swal.fire("Good job!", "Product Removed from Cart", "success");
+                            this.classList.toggle("AddedCart");
                         }
-                        this.classList.toggle("AddedCart");
                         countRowCart();
                     }
                 };

@@ -37,21 +37,6 @@ document.addEventListener("scroll", () => {
       .classList.remove("Active_Navbar");
   }
 });
-
-// const ajaxRequest = (file, parameter) => {
-//   let data;
-//   const xhttp = new XMLHttpRequest();
-//   xhttp.open("POST", `../backend/ajax/${file}.php`, true);
-//   xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-//   xhttp.send(parameter);
-//   xhttp.onreadystatechange = () => {
-//     if (xhttp.readyState == 4 && xhttp.status == 200) {
-//       data = xhttp.responseText;
-//     }
-//   };
-//   return data;
-// };
-
 const incDecAjax = (id, state, element, cart, setTotal) => {
   const xhttp = new XMLHttpRequest();
   xhttp.open("POST", "../backend/ajax/qtyHandler.php", true);
@@ -119,11 +104,37 @@ Array.from(document.querySelectorAll(".removeCart"))?.forEach((btn) => {
     xhttp.onreadystatechange = () => {
       if (xhttp.readyState == 4 && xhttp.status == 200) {
         if (xhttp.responseText) {
+          const response = JSON.parse(xhttp.responseText);
           this.parentElement.parentElement.remove();
-          Swal.fire("Good job!", xhttp.responseText, "success");
+          if (response[1] == 0) {
+            Swal.fire({
+              title: "Good job!",
+              text: response[0],
+              icon: "success",
+              showCancelButton: false,
+              confirmButtonColor: "#3085d6",
+              cancelButtonColor: "#d33",
+              confirmButtonText: "OK",
+            }).then((result) => {
+              location.reload();
+            });
+          } else {
+            Swal.fire("Good job!", response[0], "success");
+          }
+
+          if (this.value != 0) {
+            document.getElementById("cartcount").innerHTML =
+              "(" + response[1] + ")";
+            document.getElementById("countCart").innerHTML = response[1];
+          } else {
+            document.getElementById("countWish").innerHTML = response[1];
+            document.getElementById("wishcount").innerHTML =
+              "(" + response[1] + ")";
+          }
         } else {
           Swal.fire("Some Error!", "Please Try Again Later", "error");
         }
+        subTotalRequire();
       }
     };
   });
@@ -227,7 +238,7 @@ const setAllProducts = (catId = [], stock = [], min = 0, max = 100000) => {
           Number(item.price) + 100
         }</del></p><div class="buttons"><button name="${
           item.prd_id
-        }" class="addToCart"><span><i class="bi bi-cart-fill"></i>Add toCart</span> <span><i class="bi bi-cart"></i></span> <span><i class="bi bi-clipboard-check-fill"></i>Added toCart</span></button></div></div><button name="${
+        }" class="addToCart"><span><i class="bi bi-cart-fill"></i>Add to Cart</span> <span><i class="bi bi-cart"></i></span> <span><i class="bi bi-clipboard-check-fill"></i>Added to Cart</span></button></div></div><button name="${
           item.prd_id
         }" class="wish-btn"><i class="bi bi-heart"></i></button>`;
         document.getElementById("products").appendChild(card);

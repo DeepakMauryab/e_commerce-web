@@ -63,8 +63,12 @@ if (isset($_SESSION['user'])) {
                                         <?php echo $data['total'] ?>
                                     </span>
                                 </td>
-                                <td> <button class="removeCart" value="0" name="<?php echo $data['cardId'] ?>"><i
-                                            class="bi bi-trash-fill"></i></button></td>
+                                <td >
+                                    <button class="addToCart addToCartWish mr-1" value="0" name="<?php echo $data['productId'] ?>"><i
+                                            class="bi bi-minecart-loaded"></i></button>
+                                    <button class="removeCart" value="0" name="<?php echo $data['cardId'] ?>"><i
+                                            class="bi bi-trash-fill"></i></button>
+                                </td>
                             </tr>
 
                             <?php
