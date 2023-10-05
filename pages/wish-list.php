@@ -6,11 +6,11 @@ if (isset($_SESSION['user'])) {
     $cartData = $db->query("SELECT *, wishlist.id as cardId FROM `wishlist` JOIN `products` on products.id= wishlist.productId Where userId= $user");
     $isCart = $cartData->num_rows;
 }
+
 ?>
 
 
 <div class="container section">
-
 
     <div class="wrap cf cartDesign">
         <h1 class="projTitle">Wishlist</h1>
@@ -63,9 +63,9 @@ if (isset($_SESSION['user'])) {
                                         <?php echo $data['total'] ?>
                                     </span>
                                 </td>
-                                <td >
-                                    <button class="addToCart addToCartWish mr-1" value="0" name="<?php echo $data['productId'] ?>"><i
-                                            class="bi bi-minecart-loaded"></i></button>
+                                <td>
+                                    <button class="addToCart addToCartWish mr-1" value="0"
+                                        name="<?php echo $data['productId'] ?>"><i class="bi bi-minecart-loaded"></i></button>
                                     <button class="removeCart" value="0" name="<?php echo $data['cardId'] ?>"><i
                                             class="bi bi-trash-fill"></i></button>
                                 </td>
@@ -107,4 +107,7 @@ if (isset($_SESSION['user'])) {
     </div>
 </div>
 <!-- footer start -->
-<?php include "./layout/footer.php" ?>
+<?php
+ include "./layout/AlsoLike.php" ;
+ include "./layout/footer.php" ;
+ ?>

@@ -1,4 +1,7 @@
 <?php
+$folderName = "/ShoppingStore/";
+$host = $_SERVER['HTTP_HOST'];
+$baseurl = "http://" . $host . $folderName;
 
 $servername = "localhost";
 $username = "root";

@@ -50,7 +50,8 @@ if (isset($_POST['register'])) {
     if ($row > 0) {
         $verify = password_verify($password, $data['password']);
         if ($verify) {
-            $_SESSION['user'] = $data['id'];
+            // setcookie("user", $data['id'], time() + (86400 * 30), "/");
+            $_SESSION['user']= $data['id'];
             ?>
             <script>
                 alert("Login Successfull!");

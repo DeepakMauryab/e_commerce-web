@@ -64,8 +64,11 @@ if (isset($_SESSION['user'])) {
                                         <?php echo $data['total'] ?>
                                     </span>
                                 </td>
-                                <td> <button class="removeCart" value="1" name="<?php echo $data['cardId'] ?>"><i
-                                            class="bi bi-trash-fill"></i></button></td>
+                                <td> <button class="addToWish addToCartWish mr-1" value="0"
+                                        name="<?php echo $data['productId'] ?>"><i class="bi bi-heart"></i></button>
+                                    <button class="removeCart" value="1" name="<?php echo $data['cardId'] ?>"><i
+                                            class="bi bi-trash-fill"></i></button>
+                                </td>
                             </tr>
 
                             <?php
@@ -84,7 +87,7 @@ if (isset($_SESSION['user'])) {
                     <li><span class="label">Tax (12%):</span><span class="value">₹<span id="tax">35.00</span></span></li>
                     <li class="totalRow final"><span class="label">Total:</span><span class="value">₹
                             <span id="total">35.00</span></span></li>
-                    <li><a href="#" class="btn continue">Checkout</a></li>
+                    <li><a href="<?php echo $baseurl ?>pages/check-out.php" class="btn continue">Checkout</a></li>
                 </ul>
             </div>
 
@@ -117,4 +120,7 @@ if (isset($_SESSION['user'])) {
     </div>
 </div>
 <!-- footer start -->
-<?php include "./layout/footer.php" ?>
+<?php
+ include "./layout/AlsoLike.php" ;
+ include "./layout/footer.php" ;
+ ?>

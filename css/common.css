@@ -283,7 +283,7 @@ img {
 .heading {
   color: #303030;
   position: relative;
-  display: inline;
+  display: inline-block;
   padding-bottom: 0.2rem;
 }
 .heading::after {
@@ -310,7 +310,7 @@ img {
 }
 .headingTag {
   color: #128147;
-  font-size: .8rem;
+  font-size: 0.8rem;
   font-weight: 600;
 }
 @keyframes headingBox {
@@ -407,4 +407,20 @@ figure.zoomBox:hover img {
 
 .text-end {
   text-align: right;
+}
+.hidden {
+  overflow: hidden;
+}
+
+.text-green {
+  color: green;
+}
+.border-b-1 {
+  border-bottom: 1px solid green;
+}
+.text-red {
+  color: red;
+}
+.text-yellow {
+  color: #72600d;
 }

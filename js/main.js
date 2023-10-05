@@ -12,6 +12,21 @@ $(".slider").slick({
   nextArrow:
     '<svg width="40" class="next" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M20 3.49691e-06C31.0457 5.4282e-06 40 8.95431 40 20C40 31.0457 31.0457 40 20 40C8.9543 40 1.56562e-06 31.0457 3.49691e-06 20C5.4282e-06 8.95431 8.95431 1.56562e-06 20 3.49691e-06ZM23.8794 26.4802C24.2446 26.8945 24.8368 26.8945 25.202 26.4802L30.413 20.5692C30.7782 20.1549 30.7782 19.4833 30.413 19.069L25.202 13.1579C24.8368 12.7437 24.2446 12.7437 23.8794 13.1579C23.5142 13.5722 23.5142 14.2439 23.8794 14.6582L27.5088 18.7752L10.3135 18.7752C9.7612 18.7752 9.31348 19.2229 9.31348 19.7752C9.31348 20.3275 9.76119 20.7752 10.3135 20.7752L27.5862 20.7752L23.8794 24.98C23.5142 25.3943 23.5142 26.066 23.8794 26.4802Z" fill="#7C8B9C"/></svg>',
 });
+$(".alsoLikeSlider").slick({
+  dots: true,
+  infinite: true,
+  speed: 500,
+  cssEase: "linear",
+  arrows: true,
+  speed: 700,
+  autoPlay: true,
+  slidesToShow: 4,
+  slidesToScroll: 1,
+  nextArrow:
+    '<button class="slick-next" ><i class="bi bi-chevron-right"></i></button>',
+  prevArrow:
+    '<button class="slick-prev" ><i class="bi bi-chevron-right"></i></button>',
+});
 
 function getOffset(el) {
   var _x = 0;
@@ -61,9 +76,8 @@ const subTotalRequire = () => {
     const allCartTotal = Array.from(
       document.querySelectorAll(".allCartTotal")
     ).reduce((acc, item) => Number(item.innerHTML) + Number(acc), [0]);
-    let total = cartAllQty * allCartTotal;
-    let tax = (total * 12) / 100;
-    let Finaltotal = total + (total * 12) / 100 + 100;
+    let tax = (allCartTotal * 12) / 100;
+    let Finaltotal = allCartTotal + tax + 100;
     subTotalCart.querySelector("#sTotal").innerHTML = allCartTotal?.toFixed(2);
     subTotalCart.querySelector("#tax").innerHTML = tax?.toFixed(2);
     subTotalCart.querySelector("#total").innerHTML = Finaltotal?.toFixed(2);
@@ -240,16 +254,16 @@ const setAllProducts = (catId = [], stock = [], min = 0, max = 100000) => {
           item.prd_id
         }" class="addToCart"><span><i class="bi bi-cart-fill"></i>Add to Cart</span> <span><i class="bi bi-cart"></i></span> <span><i class="bi bi-clipboard-check-fill"></i>Added to Cart</span></button></div></div><button name="${
           item.prd_id
-        }" class="wish-btn"><i class="bi bi-heart"></i></button>`;
+        }" class="wish-btn addToWish"><i class="bi bi-heart"></i></button>`;
         document.getElementById("products").appendChild(card);
       });
     }
-    addToWish(document.querySelectorAll(".wish-btn"));
+    addToWish(document.querySelectorAll(".addToWish"));
     addToCart(document.querySelectorAll(".addToCart"));
     Array.from(document.querySelectorAll(".addToCart"))?.forEach((item) => {
       checkWishCart(item, item.name, 1);
     });
-    Array.from(document.querySelectorAll(".wish-btn"))?.forEach((item) => {
+    Array.from(document.querySelectorAll(".addToWish"))?.forEach((item) => {
       checkWishCart(item, item.name, 0);
     });
   };
@@ -290,3 +304,20 @@ if (document.querySelector("#sideBarFilter")) {
     })
   );
 }
+
+$(function () {
+  $("#exzoom").exzoom({
+    // thumbnail nav options
+    navWidth: 60,
+    navHeight: 60,
+    navItemNum: 5,
+    navItemMargin: 7,
+    navBorder: 1,
+
+    // autoplay
+    autoPlay: true,
+
+    // autoplay interval in milliseconds
+    autoPlayTimeout: 2000,
+  });
+});

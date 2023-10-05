@@ -135,7 +135,7 @@ $Isproducts = $products->num_rows;
                     Cart</span></button>
               </div>
             </div>
-            <button name="<?php echo $data['prd_id'] ?>" class="wish-btn"><i class="bi bi-heart"></i></button>
+            <button name="<?php echo $data['prd_id'] ?>" class="wish-btn addToWish"><i class="bi bi-heart"></i></button>
           </div>
           <?php
         }

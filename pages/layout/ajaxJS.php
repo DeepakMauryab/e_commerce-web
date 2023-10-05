@@ -77,7 +77,7 @@
         });
     }
 
-    addToWish(document.querySelectorAll(".wish-btn"));
+    addToWish(document.querySelectorAll(".addToWish"));
     // adding to cart with ajax
 
 
@@ -174,7 +174,7 @@
     Array.from(document.querySelectorAll('.addToCart'))?.forEach((item) => {
         checkWishCart(item, item.name, 1)
     })
-    Array.from(document.querySelectorAll('.wish-btn'))?.forEach((item) => {
+    Array.from(document.querySelectorAll('.addToWish'))?.forEach((item) => {
         checkWishCart(item, item.name, 0)
     })
 </script>
