@@ -25,7 +25,7 @@ $(".alsoLikeSlider").slick({
   nextArrow:
     '<button class="slick-next" ><i class="bi bi-chevron-right"></i></button>',
   prevArrow:
-    '<button class="slick-prev" ><i class="bi bi-chevron-right"></i></button>',
+    '<button class="slick-prev" ><i class="bi bi-chevron-left"></i></button>',
 });
 
 function getOffset(el) {
@@ -319,5 +319,31 @@ $(function () {
 
     // autoplay interval in milliseconds
     autoPlayTimeout: 2000,
+  });
+});
+
+$(".testimonialData").slick({
+  dots: false,
+  infinite: true,
+  speed: 1000,
+  slidesToShow: 4,
+  slidesToScroll: 1,
+  nextArrow:
+    '<button class="slick-next"><i class="bi bi-chevron-right"></i></button>',
+  prevArrow:
+    '<button class="slick-prev"><i class="bi bi-chevron-left"></i></button>',
+});
+
+Array.from(document.querySelectorAll(".openUserProfile")).forEach((item) => {
+  document.getElementById("BookingHistory").style.display = "block";
+  document.getElementById("personalInfo").style.display = "none";
+  item.addEventListener("click", (e) => {
+    if (e.target.value === "order") {
+      document.getElementById("BookingHistory").style.display = "block";
+      document.getElementById("personalInfo").style.display = "none";
+    } else {
+      document.getElementById("personalInfo").style.display = "block";
+      document.getElementById("BookingHistory").style.display = "none";
+    }
   });
 });

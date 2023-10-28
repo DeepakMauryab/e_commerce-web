@@ -5,7 +5,8 @@ session_start();
 if(isset($_SESSION['user'])){
   ?>
   <script>
-    window.history.back();
+    // window.history.back();
+    location.replace("./user-profile.php")
   </script>
   <?php
 }

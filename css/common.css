@@ -28,6 +28,9 @@ a {
 .flex {
   display: flex;
 }
+.flexImp {
+  display: flex !important;
+}
 .all_center {
   display: flex;
   justify-content: center;
@@ -50,6 +53,9 @@ a {
 }
 .items-center {
   align-items: center;
+}
+.items-start {
+  align-items: flex-start;
 }
 .gap-half {
   gap: 0.5rem;
@@ -232,6 +238,9 @@ a {
 /* width section :start */
 .w-100 {
   width: 100%;
+}
+.w-90 {
+  width: 90%;
 }
 .w-50 {
   width: 50%;
@@ -424,3 +433,4 @@ figure.zoomBox:hover img {
 .text-yellow {
   color: #72600d;
 }
+

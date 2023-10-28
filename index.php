@@ -51,8 +51,8 @@ $Isproducts = $products->num_rows;
 
 <div class="category relative">
   <div class="container section">
-    <div class="flex flex-column" >
-      <span class="headingTag" >Category</span>
+    <div class="flex flex-column">
+      <span class="headingTag">Category</span>
       <h1 class="heading">Our Categories</h1>
     </div>
     <div class="boxes">
@@ -60,9 +60,10 @@ $Isproducts = $products->num_rows;
       if ($Iscategory > 0) {
         $_ = 0;
         while ($data = $category->fetch_assoc()) { ?>
-          <a href="<?php echo $baseurl . 'pages/shop.php?catId=' . $data['id'] ?>" class="category_box" data-aos="fade-up" data-aos-duration="<?php echo $_ ?>000">
+          <a href="<?php echo $baseurl . 'pages/shop.php?catId=' . $data['id'] ?>" class="category_box" data-aos="fade-up"
+            data-aos-duration="<?php echo $_ ?>000">
             <figure class="zoomBox">
-              <img src="./Assets/products/prd1.jpg" alt="product1" />
+              <img src="<?php echo $AssetsUrl. $data['image']?>" alt="product1" />
             </figure>
             <div class="content">
               <p>
@@ -99,8 +100,8 @@ $Isproducts = $products->num_rows;
 
 <div class="products mt-2 relative">
   <div class="container section">
-  <div class="flex flex-column" >
-      <span class="headingTag" >Products</span>
+    <div class="flex flex-column">
+      <span class="headingTag">Products</span>
       <h1 class="heading">Our Products</h1>
     </div>
     <div class="boxes">
@@ -143,7 +144,7 @@ $Isproducts = $products->num_rows;
       ?>
     </div>
     <div class="flex jt-center mt-2">
-      <a href="#" class="button-Theme">Show More Products</a>
+      <a href="<?php $baseurl ?>pages/shop.php" class="button-Theme">Show More Products</a>
     </div>
   </div>
 </div>
@@ -163,6 +164,44 @@ $Isproducts = $products->num_rows;
   </div>
 </div>
 <!-- ad section end -->
+
+<!-- testimonial section start  -->
+
+<div class="testimonial mb-1">
+  <div class="small-container">
+  <div class="flex flex-column mb-1">
+      <span class="headingTag">Reviews</span>
+      <h1 class="heading">Our Testimonials</h1>
+    </div>
+    <div class="row testimonialData">
+      <?php for ($i = 0; $i < 5; $i++) {
+        ?>
+        <div class="col-3">
+          <i class="fas fa-quote-left"></i>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Perferendis, quae molestias error id est voluptatibus quos amet
+            numquam aspernatur nam cumque ullam? Veritatis eveniet et, maxime
+            eaque soluta quas modi.
+          </p>
+          <div class="rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="far fa-star"></i>
+            <i class="far fa-star"></i>
+            <i class="far fa-star"></i>
+          </div>
+          <figure><img src="https://i.ibb.co/zfXD2Tx/user-1.png" alt="" /></figure>
+          <h3>Marta W.</h3>
+        </div>
+        <?php
+      }
+      ?>
+    </div>
+  </div>
+</div>
+
+<!-- testimonial section end  -->
 
 <!-- map section start -->
 <div class="map w-100 h-50vh over-hidden">

@@ -80,7 +80,7 @@ $Iscategory = $category->num_rows;
                 </ul>
             </div>
             <div class="nav-icons flex gap-1 p-half">
-                <a href="<?php echo $baseurl ?>pages/login.php"><i class="bi bi-person"></i></a>
+                <a href="<?php echo $baseurl ?>pages/<?php echo empty($_SESSION['user']) ? "login" : "user-profile"?>.php"><i class="bi bi-person"></i></a>
                 <a href="<?php echo $baseurl ?>pages/wish-list.php" class="relative"><i class="bi bi-heart"></i>
                     <span class="count" id="countWish">0</span>
                 </a>
