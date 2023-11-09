@@ -46,6 +46,30 @@ $Isproducts = $products->num_rows;
       <button>Read More <i class="bi bi-arrow-right"></i></button>
     </div>
   </figure>
+  <figure><img src="./Assets/slider/slider3.jpg" alt="" />
+    <div class="content">
+      <h5>We Are Since 2023</h5>
+      <h1>Online Shopping Store</h1>
+      <h6>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, sit quibusdam quae exercitationem eligendi,
+        tenetur saepe adipisci quas enim quisquam consequuntur non maiores neque provident facilis itaque nemo magnam
+        error!
+      </h6>
+      <button>Read More <i class="bi bi-arrow-right"></i></button>
+    </div>
+  </figure>
+  <figure><img src="./Assets/slider/slider4.jpg" alt="" />
+    <div class="content">
+      <h5>We Are Since 2023</h5>
+      <h1>Online Shopping Store</h1>
+      <h6>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, sit quibusdam quae exercitationem eligendi,
+        tenetur saepe adipisci quas enim quisquam consequuntur non maiores neque provident facilis itaque nemo magnam
+        error!
+      </h6>
+      <button>Read More <i class="bi bi-arrow-right"></i></button>
+    </div>
+  </figure>
 </div>
 <!-- slider section end -->
 
@@ -63,7 +87,7 @@ $Isproducts = $products->num_rows;
           <a href="<?php echo $baseurl . 'pages/shop.php?catId=' . $data['id'] ?>" class="category_box" data-aos="fade-up"
             data-aos-duration="<?php echo $_ ?>000">
             <figure class="zoomBox">
-              <img src="<?php echo $AssetsUrl. $data['image']?>" alt="product1" />
+              <img src="<?php echo $AssetsUrl . $data['image'] ?>" alt="product1" />
             </figure>
             <div class="content">
               <p>
@@ -110,7 +134,8 @@ $Isproducts = $products->num_rows;
         $_ = 0;
         while ($data = $products->fetch_assoc()) {
           ?>
-          <div class="product_box relative" data-aos="zoom-in" data-aos-duration="2000">
+          <a href="<?php echo $baseurl ?>pages/product-view.php?product_id=<?php echo $data['prd_id'] ?>"
+            class="product_box relative" data-aos="zoom-in" data-aos-duration="2000">
             <div class="img">
               <figure>
                 <img src="<?php echo $AssetsUrl . $data['image1'] ?>" alt="" />
@@ -137,7 +162,7 @@ $Isproducts = $products->num_rows;
               </div>
             </div>
             <button name="<?php echo $data['prd_id'] ?>" class="wish-btn addToWish"><i class="bi bi-heart"></i></button>
-          </div>
+          </a>
           <?php
         }
       }
@@ -169,7 +194,7 @@ $Isproducts = $products->num_rows;
 
 <div class="testimonial mb-1">
   <div class="small-container">
-  <div class="flex flex-column mb-1">
+    <div class="flex flex-column mb-1">
       <span class="headingTag">Reviews</span>
       <h1 class="heading">Our Testimonials</h1>
     </div>

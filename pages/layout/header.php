@@ -19,6 +19,7 @@ $Iscategory = $category->num_rows;
     <link rel="stylesheet" href="<?php echo $baseurl ?>css/style.css" />
     <link rel="stylesheet" href="<?php echo $baseurl ?>css/common.css" />
     <link rel="stylesheet" href="<?php echo $baseurl ?>css/utilities.css" />
+    <link rel="icon" type="image/x-icon" href="../Assets/logo/logo.png">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
     <title>Online Store</title>
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
@@ -49,6 +50,7 @@ $Iscategory = $category->num_rows;
             <div class="logo p-half">
                 <a href="<?php echo $baseurl ?>">
                     <h4>Online Store</h4>
+                    <!-- <figure> <img src="../Assets/logo/logo.png" alt=""></figure> -->
                 </a>
             </div>
             <div class="nav-tab">
@@ -80,7 +82,9 @@ $Iscategory = $category->num_rows;
                 </ul>
             </div>
             <div class="nav-icons flex gap-1 p-half">
-                <a href="<?php echo $baseurl ?>pages/<?php echo empty($_SESSION['user']) ? "login" : "user-profile"?>.php"><i class="bi bi-person"></i></a>
+                <a
+                    href="<?php echo $baseurl ?>pages/<?php echo empty($_SESSION['user']) ? "login" : "user-profile" ?>.php"><i
+                        class="bi bi-person"></i></a>
                 <a href="<?php echo $baseurl ?>pages/wish-list.php" class="relative"><i class="bi bi-heart"></i>
                     <span class="count" id="countWish">0</span>
                 </a>

@@ -236,7 +236,8 @@ const setAllProducts = (catId = [], stock = [], min = 0, max = 100000) => {
       const products = JSON.parse(xhttp.responseText);
       document.getElementById("prtCount").innerHTML = products.length;
       products.map((item) => {
-        let card = document.createElement("div");
+        let card = document.createElement("a");
+        card.href = `./product-view.php?product_id=${item.prd_id}`;
         card.className = "product_box relative";
         card.setAttribute("data-aos", "zoom-in");
         card.setAttribute("data-aos-duration", "2000");
@@ -305,22 +306,17 @@ if (document.querySelector("#sideBarFilter")) {
   );
 }
 
-$(function () {
+if ($("#exzoom").length > 0) {
   $("#exzoom").exzoom({
-    // thumbnail nav options
     navWidth: 60,
     navHeight: 60,
     navItemNum: 5,
     navItemMargin: 7,
     navBorder: 1,
-
-    // autoplay
     autoPlay: true,
-
-    // autoplay interval in milliseconds
     autoPlayTimeout: 2000,
   });
-});
+}
 
 $(".testimonialData").slick({
   dots: false,

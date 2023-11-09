@@ -284,5 +284,8 @@ button:active {
   visibility: hidden;
   opacity: 0;
 }
-
-
+.disabledBtn{
+  opacity: .8;
+  box-shadow: none !important;
+  pointer-events: none;
+}

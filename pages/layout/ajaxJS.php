@@ -177,4 +177,15 @@
     Array.from(document.querySelectorAll('.addToWish'))?.forEach((item) => {
         checkWishCart(item, item.name, 0)
     })
+
+
+    Array.from(document.querySelectorAll('a')).forEach(element => {
+
+        if (element.href === window.location.href) {
+            element.style.pointerEvents = "none";
+        }
+
+    });
+
+
 </script>

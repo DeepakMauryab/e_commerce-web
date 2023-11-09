@@ -21,7 +21,7 @@ if (isset($_SESSION['user'])) {
                 <h1>My Cart <small id="cartcount">
                         <?php echo "(" . $isCart . ")" ?>
                     </small></h1>
-                <a href="#" class="continue">Continue Shopping</a>
+                <a href="<?php echo $baseurl ?>pages/shop.php" class="continue">Continue Shopping</a>
             </div>
             <div class="cart">
 
