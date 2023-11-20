@@ -6,7 +6,7 @@ $baseurl = "http://" . $host . $folderName;
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "onlinestore";
+$dbname = "shopping";
 
 // Create connection
 $db = new mysqli($servername, $username, $password, $dbname);

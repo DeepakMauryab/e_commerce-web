@@ -23,6 +23,7 @@ include "./layout/header.php";
                 <button class="openUserProfile" value="order"><i class="bi bi-boxes"></i> Orders
                     History</button>
                 <button class="openUserProfile" value="info"><i class="bi bi-person"></i> Personal Information</button>
+                <button class="openUserProfile" id="logout" value="logout"><i class="bi bi-box-arrow-right"></i> Logout</button>
             </div>
         </div>
         <div class="w-80 bookingHistory">

@@ -1,11 +1,10 @@
 $(".slider").slick({
   dots: true,
   infinite: true,
-  speed: 500,
+  speed: 700,
   cssEase: "linear",
   fade: true,
   arrows: true,
-  speed: 700,
   autoPlay: true,
   prevArrow:
     '<svg class="prev" width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M20 40C8.9543 40 -2.7141e-06 31.0457 -1.74846e-06 20C-7.8281e-07 8.9543 8.95431 -2.7141e-06 20 -1.74846e-06C31.0457 -7.8281e-07 40 8.9543 40 20C40 31.0457 31.0457 40 20 40ZM16.1206 13.5198C15.7554 13.1055 15.1632 13.1055 14.798 13.5198L9.58704 19.4308C9.22182 19.8451 9.22182 20.5168 9.58704 20.931L14.798 26.8421C15.1632 27.2563 15.7554 27.2563 16.1206 26.8421C16.4858 26.4278 16.4858 25.7561 16.1206 25.3418L12.4912 21.2248L29.6865 21.2248C30.2388 21.2248 30.6865 20.7771 30.6865 20.2248C30.6865 19.6725 30.2388 19.2248 29.6865 19.2248L12.4138 19.2248L16.1206 15.02C16.4858 14.6057 16.4858 13.934 16.1206 13.5198Z" fill="#7C8B9C"/></svg>',
@@ -236,16 +235,17 @@ const setAllProducts = (catId = [], stock = [], min = 0, max = 100000) => {
       const products = JSON.parse(xhttp.responseText);
       document.getElementById("prtCount").innerHTML = products.length;
       products.map((item) => {
-        let card = document.createElement("a");
+        let card = document.createElement("div");
         card.href = `./product-view.php?product_id=${item.prd_id}`;
         card.className = "product_box relative";
         card.setAttribute("data-aos", "zoom-in");
         card.setAttribute("data-aos-duration", "2000");
-        card.innerHTML = `<div class="img"><figure><img src="../backend/images/${
+        card.innerHTML = `<a href="<?php echo $baseurl ?>pages/product-view.php?product_id=<?php echo $data['prd_id'] ?>" class="img"><figure><img src="../backend/images/${
           item.image1
-        }" alt="" /><img src="../Assets/products/iphone2.png" alt="" class="secondImg" /></div></figure><div class="content"><p class="name">${
+        }" alt="" /><img src="../Assets/products/iphone2.png" alt="" class="secondImg" /></div></figure><div class="content">
+        <a href="<?php echo $baseurl ?>pages/product-view.php?product_id=<?php echo $data['prd_id'] ?>" class="name">${
           item.name
-        }</p><p class="categoryTitle">${
+        }</a><p class="categoryTitle">${
           item.category
         }</p><p class="flex jt-end price items-center"><span>&#x20B9;${Number(
           item.price
@@ -337,7 +337,7 @@ Array.from(document.querySelectorAll(".openUserProfile")).forEach((item) => {
     if (e.target.value === "order") {
       document.getElementById("BookingHistory").style.display = "block";
       document.getElementById("personalInfo").style.display = "none";
-    } else {
+    } else if (e.target.value === "info") {
       document.getElementById("personalInfo").style.display = "block";
       document.getElementById("BookingHistory").style.display = "none";
     }

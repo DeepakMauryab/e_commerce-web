@@ -1,7 +1,6 @@
 <?php
 include "./pages/layout/header.php";
 
-
 $category = $db->query('SELECT * FROM `category`');
 $Iscategory = $category->num_rows;
 $products = $db->query('SELECT *,products.id AS prd_id, category.id AS cat_id FROM `products` Inner JOIN category on products.categoryId= category.id  order by prd_id desc limit 8');
@@ -134,18 +133,17 @@ $Isproducts = $products->num_rows;
         $_ = 0;
         while ($data = $products->fetch_assoc()) {
           ?>
-          <a href="<?php echo $baseurl ?>pages/product-view.php?product_id=<?php echo $data['prd_id'] ?>"
-            class="product_box relative" data-aos="zoom-in" data-aos-duration="2000">
-            <div class="img">
+          <div class="product_box relative" data-aos="zoom-in" data-aos-duration="2000">
+            <a href="<?php echo $baseurl ?>pages/product-view.php?product_id=<?php echo $data['prd_id'] ?>" class="img">
               <figure>
                 <img src="<?php echo $AssetsUrl . $data['image1'] ?>" alt="" />
                 <img src="./Assets/products/iphone2.png" alt="" class="secondImg" />
-            </div>
+            </a>
             </figure>
             <div class="content">
-              <p class="name">
+              <a href="<?php echo $baseurl ?>pages/product-view.php?product_id=<?php echo $data['prd_id'] ?>" class="name">
                 <?php echo $data['name'] ?>
-              </p>
+              </a>
               <p class="categoryTitle">
                 <?php echo $data['category'] ?>
               </p>
@@ -162,7 +160,7 @@ $Isproducts = $products->num_rows;
               </div>
             </div>
             <button name="<?php echo $data['prd_id'] ?>" class="wish-btn addToWish"><i class="bi bi-heart"></i></button>
-          </a>
+          </div>
           <?php
         }
       }

@@ -187,5 +187,29 @@
 
     });
 
+    const logoutButton = document.getElementById('logout') ?? false;
+    if (logoutButton) {
+        logoutButton.addEventListener('click', (e) => {
+            Swal.fire({
+                title: "You Are Sure ?",
+                text: "You Want to logout",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Logout",
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    <?php
+                    // unset($_SESSION['user']);
+                    ?>
+
+                    window.history.back();
+                }
+            });
+        })
+
+    }
+
 
 </script>

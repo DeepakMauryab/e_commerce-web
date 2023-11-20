@@ -280,9 +280,11 @@ nav .nav-icons a {
   box-shadow: none;
   -webkit-box-shadow: none;
 }
+.product_box .content a ,
 .product_box .content p {
   text-transform: capitalize;
   font-size: 0.85rem;
+  color: #000;
 }
 .product_box .content p.categoryTitle {
   font-size: 0.7rem;

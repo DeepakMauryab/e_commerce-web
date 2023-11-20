@@ -1,6 +1,11 @@
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <?php
+
+// echo $_COOKIE['user'];
 session_start();
 $folderName = "/ShoppingStore/";
 $host = $_SERVER['HTTP_HOST'];
@@ -19,7 +24,7 @@ $Iscategory = $category->num_rows;
     <link rel="stylesheet" href="<?php echo $baseurl ?>css/style.css" />
     <link rel="stylesheet" href="<?php echo $baseurl ?>css/common.css" />
     <link rel="stylesheet" href="<?php echo $baseurl ?>css/utilities.css" />
-    <link rel="icon" type="image/x-icon" href="../Assets/logo/logo.png">
+    <link rel="icon" type="image/x-icon" href="<?php echo $baseurl ?>Assets/logo/logo.png">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
     <title>Online Store</title>
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
