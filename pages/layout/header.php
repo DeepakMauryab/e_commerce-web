@@ -1,6 +1,3 @@
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <?php
@@ -12,7 +9,7 @@ $host = $_SERVER['HTTP_HOST'];
 $baseurl = "http://" . $host . $folderName;
 $AssetsUrl = "http://" . $host . $folderName . "backend/images/";
 $path1 = $_SERVER['DOCUMENT_ROOT'] . $folderName . "backend/connect.php";
-include_once($path1);
+include_once ($path1);
 $category = $db->query('SELECT * FROM `category`');
 $Iscategory = $category->num_rows;
 ?>
@@ -20,6 +17,7 @@ $Iscategory = $category->num_rows;
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://niralaherbal.com/css/jquery.exzoom.css">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="<?php echo $baseurl ?>css/style.css" />
     <link rel="stylesheet" href="<?php echo $baseurl ?>css/common.css" />
@@ -31,13 +29,13 @@ $Iscategory = $category->num_rows;
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
-    <link rel="stylesheet" href="https://shrawasticards.com/style/jquery.exzoom.css" />
+    <!-- <link rel="stylesheet" href="https://shrawasticards.com/style/jquery.exzoom.css" /> -->
 </head>
 
 <body>
 
     <!-- loader section  -->
-    <div class=" all_center" id="loader">
+    <div class="all_center" id="loader">
 
         <lottie-player style="width: 200px; height:200px;" src="<?php echo $baseurl ?>Assets/lottie/loader.json"
             background="transparent" speed="1" loop autoplay></lottie-player>

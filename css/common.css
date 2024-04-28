@@ -16,6 +16,7 @@ body {
   padding: 5px;
   text-align: center;
   font-size: 1rem;
+  
 }
 li {
   list-style: none;
@@ -434,3 +435,6 @@ figure.zoomBox:hover img {
   color: #72600d;
 }
 
+.exzoom .exzoom_img_ul_outer{
+  height: 373px !important;
+}

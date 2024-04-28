@@ -85,7 +85,7 @@ $Isproducts = $products->num_rows;
         while ($data = $category->fetch_assoc()) { ?>
           <a href="<?php echo $baseurl . 'pages/shop.php?catId=' . $data['id'] ?>" class="category_box" data-aos="fade-up"
             data-aos-duration="<?php echo $_ ?>000">
-            <figure class="zoomBox">
+            <figure class="zoomBox categoryImg">
               <img src="<?php echo $AssetsUrl . $data['image'] ?>" alt="product1" />
             </figure>
             <div class="content">
@@ -137,9 +137,9 @@ $Isproducts = $products->num_rows;
             <a href="<?php echo $baseurl ?>pages/product-view.php?product_id=<?php echo $data['prd_id'] ?>" class="img">
               <figure>
                 <img src="<?php echo $AssetsUrl . $data['image1'] ?>" alt="" />
-                <img src="./Assets/products/iphone2.png" alt="" class="secondImg" />
+                <img src="<?php echo $AssetsUrl . $data['image2'] ?>" alt="" class="secondImg" />
+              </figure>
             </a>
-            </figure>
             <div class="content">
               <a href="<?php echo $baseurl ?>pages/product-view.php?product_id=<?php echo $data['prd_id'] ?>" class="name">
                 <?php echo $data['name'] ?>
