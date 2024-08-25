@@ -13,7 +13,7 @@ if ($_SESSION['user']) {
         <div class="bookings">
             <div class="firstsection">
                 <div class="first">
-                    <figure><img src="<?php echo $AssetsUrl. $data['image1'] ?>" alt=""></figure>
+                    <figure><img src="<?php echo $AssetsUrl . $data['image1'] ?>" alt=""></figure>
                 </div>
                 <div class="second">
                     <h6>
@@ -30,19 +30,28 @@ if ($_SESSION['user']) {
                     </p>
                     <p>
                         <?php echo $data['qty'] ?>
+                        Price: ₹ <?php echo $data['price'] ?>.00
+                    </p>
+                    <p>
+                        <?php echo date('d M, Y', strtotime($data['createdAt'])) ?>
+                    </p>
+                    <p>
+                        Quantity: <?php echo $data['qty'] ?>
                     </p>
 
                 </div>
             </div>
             <div class="third">
-                <h6>status</h6>
-                <button>cancle</button>
-                <br>
-                <h5>Booking Id</h5>
-                <h4>
-                    <?php echo $data['orderId'] ?>
-                </h4>
+                <form class="third">
+                    <h6>status</h6>
+                    <button>cancle</button>
+                    <br>
+                    <h5>Booking Id</h5>
+                    <h4>
+                        <?php echo $data['orderId'] ?>
+                    </h4>
             </div>
+            </form>
         </div>
 
     <?php }

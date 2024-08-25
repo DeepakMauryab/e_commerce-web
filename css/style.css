@@ -251,6 +251,8 @@ nav .nav-icons a {
 .product_box figure {
   position: relative;
   cursor: pointer;
+  height: 230px;
+  width: 100%;
 }
 
 .product_box figure .secondImg {
@@ -280,7 +282,7 @@ nav .nav-icons a {
   box-shadow: none;
   -webkit-box-shadow: none;
 }
-.product_box .content a ,
+.product_box .content a,
 .product_box .content p {
   text-transform: capitalize;
   font-size: 0.85rem;
@@ -812,7 +814,6 @@ input[type="number"]::-webkit-inner-spin-button {
   position: absolute;
   top: -19px;
   height: 4px;
-  -webkit-appearance: none;
   cursor: pointer;
   width: 100%;
   pointer-events: none;
@@ -1113,9 +1114,7 @@ input[type="number"]::-webkit-inner-spin-button {
   height: 24px;
   transform: translateY(-150%);
 }
-.testimonial .slick-next {
-  /* left: 100%; */
-}
+
 .testimonial .slick-prev {
   transform: translate(-100%, -150%);
   margin-right: 10px;
@@ -1192,29 +1191,82 @@ input[type="number"]::-webkit-inner-spin-button {
   border-left: 1px solid #000;
   padding-left: 2rem;
 }
-.userProfile .bookingHistory .firstsection{
+.userProfile .bookingHistory .firstsection {
   display: flex;
   gap: 2rem;
 }
-.userProfile .bookingHistory .firstsection h6{
- font-size: 1rem;
- letter-spacing: 2px;
+.userProfile .bookingHistory .firstsection h6 {
+  font-size: 1rem;
+  letter-spacing: 2px;
 }
-.userProfile .bookingHistory .firstsection .title{
- font-size: 1.5rem;
- letter-spacing: 2px;
+.userProfile .bookingHistory .firstsection .title {
+  font-size: 1.5rem;
+  letter-spacing: 2px;
 }
-.userProfile .bookingHistory .firstsection p{
- font-size: 1.1rem;
- letter-spacing: 1px;
+.userProfile .bookingHistory .firstsection p {
+  font-size: 1.1rem;
+  letter-spacing: 1px;
 }
-.userProfile .bookingHistory .third h6{
- font-size: 1.2rem;
- letter-spacing: 1px;
- color: green;
- font-weight: 600;
+.userProfile .bookingHistory .third h6 {
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+  color: green;
+  font-weight: 600;
 }
 .userProfile .bookingHistory .third button {
+  box-sizing: border-box;
+  appearance: none;
+  background-color: transparent;
+  border: 2px solid red;
+  border-radius: 0.6em;
+  color: red;
+  cursor: pointer;
+  display: flex;
+  align-self: center;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1;
+  /* margin: 20px; */
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  text-align: center;
+  text-transform: uppercase;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+
+  &:hover,
+  &:focus {
+    color: #fff;
+    outline: 0;
+  }
+}
+
+/* } */
+
+.popupParent {
+  .userProfile .bookingHistory .firstsection {
+    display: flex;
+    gap: 2rem;
+  }
+  .userProfile .bookingHistory .firstsection h6 {
+    font-size: 1rem;
+    letter-spacing: 2px;
+  }
+  .userProfile .bookingHistory .firstsection .title {
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+  }
+  .userProfile .bookingHistory .firstsection p {
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+  }
+  .userProfile .bookingHistory .third h6 {
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    color: green;
+    font-weight: 600;
+  }
+  .userProfile .bookingHistory .third button {
     box-sizing: border-box;
     appearance: none;
     background-color: transparent;
@@ -1228,51 +1280,57 @@ input[type="number"]::-webkit-inner-spin-button {
     font-weight: 400;
     line-height: 1;
     /* margin: 20px; */
-    padding: .5rem 1rem;
+    padding: 0.5rem 1rem;
     text-decoration: none;
     text-align: center;
     text-transform: uppercase;
-    font-family: 'Montserrat', sans-serif;
+    font-family: "Montserrat", sans-serif;
     font-weight: 700;
-  
+
     &:hover,
     &:focus {
       color: #fff;
       outline: 0;
     }
   }
-  
-/* } */
 
-.popupParent{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  background-color: rgba(0, 0, 0, 0.8);
-  z-index: 101;
+  /* } */
+
+  .popupParent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 101;
+  }
+
+  .form {
+    width: 60%;
+    height: 80%;
+    background-color: #fff;
+    position: relative;
+  }
+
+  .form button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    background-color: red;
+    border: 0;
+    font-size: 1.2rem;
+    transform: translate(50%, -50%);
+  }
 }
 
-.form{
-  width: 60%;
-  height: 80%;
-  background-color: #fff;
-  position: relative;
-}
-
-.form button{
-  position: absolute;
-  top: 0;
-  right: 0;
-  border-radius: 50%;
-  height: 30px;
-  width: 30px;
-  background-color: red;
-  border: 0;
-  font-size: 1.2rem;
-  transform: translate(50%, -50%);
+.categoryImg {
+  /* width: 230px; */
+  height: 230px;
 }

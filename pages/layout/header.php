@@ -9,7 +9,7 @@ $host = $_SERVER['HTTP_HOST'];
 $baseurl = "http://" . $host . $folderName;
 $AssetsUrl = "http://" . $host . $folderName . "backend/images/";
 $path1 = $_SERVER['DOCUMENT_ROOT'] . $folderName . "backend/connect.php";
-include_once($path1);
+include_once ($path1);
 $category = $db->query('SELECT * FROM `category`');
 $Iscategory = $category->num_rows;
 ?>

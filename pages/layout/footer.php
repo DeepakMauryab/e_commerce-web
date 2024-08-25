@@ -94,7 +94,11 @@
 
 <?php
 $ajaxJsPath = $_SERVER['DOCUMENT_ROOT'] . $folderName . "pages/layout/ajaxJS.php";
+<<<<<<< HEAD
 include_once($ajaxJsPath);
+=======
+include_once ($ajaxJsPath);
+>>>>>>> 894a5338172d97b360c166ce1b7b53d977e7fe4a
 ?>
 </body>
 
