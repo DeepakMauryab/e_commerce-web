@@ -84,6 +84,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
 <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 <script src="https://shrawasticards.com/javascript/jquery.exzoom.js"></script>
+<script src="https://niralaherbal.com/js/jquery.exzoom.js"></script>
 <script>
   AOS.init();
 </script>

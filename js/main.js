@@ -168,7 +168,7 @@ window.addEventListener("load", (e) => {
       document.getElementById("loader").style.opacity = 0;
       document.getElementById("loader").style.scale = 2;
       // document.getElementById("loader").parentElement.style.background = "#fff";
-    }, 700);
+    }, 50);
   }
 });
 
@@ -221,13 +221,13 @@ const setAllProducts = (catId = [], stock = [], min = 0, max = 100000) => {
   xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
   xhttp.send(
     "catId=" +
-      catId?.toString() +
-      "&stock=" +
-      stock +
-      "&min=" +
-      min +
-      "&max=" +
-      max
+    catId?.toString() +
+    "&stock=" +
+    stock +
+    "&min=" +
+    min +
+    "&max=" +
+    max
   );
   xhttp.onreadystatechange = () => {
     if (xhttp.readyState == 4 && xhttp.status == 200) {
@@ -240,22 +240,16 @@ const setAllProducts = (catId = [], stock = [], min = 0, max = 100000) => {
         card.className = "product_box relative";
         card.setAttribute("data-aos", "zoom-in");
         card.setAttribute("data-aos-duration", "2000");
-        card.innerHTML = `<a href="<?php echo $baseurl ?>pages/product-view.php?product_id=<?php echo $data['prd_id'] ?>" class="img"><figure><img src="../backend/images/${
-          item.image1
-        }" alt="" /><img src="../Assets/products/iphone2.png" alt="" class="secondImg" /></div></figure><div class="content">
-        <a href="<?php echo $baseurl ?>pages/product-view.php?product_id=<?php echo $data['prd_id'] ?>" class="name">${
-          item.name
-        }</a><p class="categoryTitle">${
-          item.category
-        }</p><p class="flex jt-end price items-center"><span>&#x20B9;${Number(
-          item.price
-        ).toFixed(2)}</span> <del>${
-          Number(item.price) + 100
-        }</del></p><div class="buttons"><button name="${
-          item.prd_id
-        }" class="addToCart"><span><i class="bi bi-cart-fill"></i>Add to Cart</span> <span><i class="bi bi-cart"></i></span> <span><i class="bi bi-clipboard-check-fill"></i>Added to Cart</span></button></div></div><button name="${
-          item.prd_id
-        }" class="wish-btn addToWish"><i class="bi bi-heart"></i></button>`;
+        card.innerHTML = `<a href="http://localhost/ShoppingStore/pages/product-view.php?product_id=${item.prd_id}" class="img"><figure><img src="../backend/images/${item.image1
+          }" alt="" /><img src="../Assets/products/iphone2.png" alt="" class="secondImg" /></div></figure><div class="content">
+        <a href="http://localhost/ShoppingStore/pages/product-view.php?product_id=${item.prd_id}" class="name">${item.name
+          }</a><p class="categoryTitle">${item.category
+          }</p><p class="flex jt-end price items-center"><span>&#x20B9;${Number(
+            item.price
+          ).toFixed(2)}</span> <del>${Number(item.price) + 100
+          }</del></p><div class="buttons"><button name="${item.prd_id
+          }" class="addToCart"><span><i class="bi bi-cart-fill"></i>Add to Cart</span> <span><i class="bi bi-cart"></i></span> <span><i class="bi bi-clipboard-check-fill"></i>Added to Cart</span></button></div></div><button name="${item.prd_id
+          }" class="wish-btn addToWish"><i class="bi bi-heart"></i></button>`;
         document.getElementById("products").appendChild(card);
       });
     }
